@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_id: 1
+  price: 9.99
+  purchase_location: MyString
+  strat_time: 2014-05-07 20:00:19
+  valid_time: 2014-05-07 20:00:19
+
+two:
+  event_id: 1
+  price: 9.99
+  purchase_location: MyString
+  strat_time: 2014-05-07 20:00:19
+  valid_time: 2014-05-07 20:00:19

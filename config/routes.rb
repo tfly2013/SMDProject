@@ -1,4 +1,12 @@
 SMDProject::Application.routes.draw do
+  resources :comments
+
+  resources :tickets
+
+  resources :events
+
+  resources :members
+
   resources :societies
 
   # The priority is based upon order of creation: first created -> highest priority.
