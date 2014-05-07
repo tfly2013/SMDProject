@@ -1,0 +1,31 @@
+<div id="listContainer">
+	<ul id="expList">
+		<li><a href="#">Home</a></li>
+		<li>
+			<a href="#">Societies</a>
+			<ul id="expList">
+				<li><%= link_to "All Societies", societies_path %></li>
+				<li>
+					<a href="#">Popular Societies</a>
+					<ul id="expList">
+						<li><a href="#">Society 1</a></li>
+						<li><a href="#">Society 2</a></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#">Events</a>
+			<ul id="expList">
+				<li><a href="#">All Events</a></li>
+				<li>
+					<a href="#">Hot Events</a>
+					<ul id="expList">
+						<li><a href="#">Event 1</a></li>
+						<li><a href="#">Event 2</a></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
