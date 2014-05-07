@@ -7,20 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<header>
-	<div class="logo"></div>
-	<div class="title"></div>
-	<div class="login"></div>
-	<div class="main_menu"></div>
-	<div class="left_nav"></div>
-</header>
-<%= yield %>	
-<footer>
-	<hr />
-	<p>Designed by: Fei Tang, Kimple Ke, Perry Yu</p>
-	<p>University of Melbourne</p>
-	<p>SWEN30006 Software Modeling and Design</p>
-	<p>Copyright &copy; 2014</p>	
-</footer>
+	<div class="container">
+		<%= render 'layouts/header' %>
+		<%= yield %>	
+		<%= render 'layouts/footer' %>
+	</div>
 </body>
 </html>
