@@ -1,0 +1,31 @@
+<h1>All Societies</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Register num</th>
+      <th>Website</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @societies.each do |society| %>
+      <tr>
+        <td><%= link_to society.name, society %></td>
+        <td><%= society.register_num %></td>
+        <td><%= society.website %></td>
+        <td><%= society.description %></td>
+        <td><%= link_to 'Edit', edit_society_path(society) %></td>
+        <td><%= link_to 'Destroy', society, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Society', new_society_path %>

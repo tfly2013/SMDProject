@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-SMDProject::Application.config.secret_key_base = 'b14520f5e33f320caa7cdb58b451cfa87360c04062db165581233e0942036fa9c028eace14090b3aa94b2f8a720eb0a076db81965b8d71698019de5fd6d19d57'
+SMDProject::Application.config.secret_key_base = '9a40fe4f9e7738d9e86c055791a0f3ca079cd21067817da999bad5e4426124c7d9602636ff7849f84c714c3837c66220f4ba9985078f52ae387a949968724a69'
