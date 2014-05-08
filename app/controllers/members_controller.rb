@@ -24,8 +24,8 @@ class MembersController < ApplicationController
   # POST /members
   # POST /members.json
   def create
-    @member = Member.new(member_params)
-
+    @member = Member.new(params.require(:member) \
+      .permit(:email, :password, :password_confirmation, :name, :student_id, :phone))
     respond_to do |format|
       if @member.save
         format.html { redirect_to @member, notice: 'Member was successfully created.' }
@@ -41,7 +41,7 @@ class MembersController < ApplicationController
   # PATCH/PUT /members/1.json
   def update
     respond_to do |format|
-      if @member.update(member_params)
+      if @member.update(params.require(:member).permit(:name, :student_id, :phone))
         format.html { redirect_to @member, notice: 'Member was successfully updated.' }
         format.json { head :no_content }
       else
@@ -65,10 +65,5 @@ class MembersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_member
       @member = Member.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def member_params
-      params.require(:member).permit(:email, :password, :name, :student_id, :phone, :status)
     end
 end

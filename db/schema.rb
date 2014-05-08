@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140507101820) do
+ActiveRecord::Schema.define(version: 20140507174650) do
 
   create_table "comments", force: true do |t|
     t.integer  "member_id"
@@ -59,13 +59,14 @@ ActiveRecord::Schema.define(version: 20140507101820) do
 
   create_table "members", force: true do |t|
     t.string   "email"
-    t.string   "password"
     t.string   "name"
     t.integer  "student_id"
     t.integer  "phone"
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "encrypted_password"
+    t.string   "salt"
   end
 
   create_table "pictures", force: true do |t|
