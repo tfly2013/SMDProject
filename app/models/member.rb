@@ -12,7 +12,9 @@ class Member < ActiveRecord::Base
                     uniqueness: { case_sensitive: false },
                     on: :create
   
-  validates :password, length: { in: 6..40 }
+  validates :password, length: { minimum: 6 }, 
+                       allow_nil: true,
+                       on: :create
                        
   validates :name, length: { maximum: 20 }
   

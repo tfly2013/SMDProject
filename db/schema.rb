@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(version: 20140514093636) do
 
   create_table "comments", force: true do |t|
-    t.integer  "members_id"
-    t.integer  "events_id"
+    t.integer  "member_id"
+    t.integer  "event_id"
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -26,31 +26,31 @@ ActiveRecord::Schema.define(version: 20140514093636) do
     t.integer  "groups_id"
     t.string   "name"
     t.string   "type"
-    t.datetime "time"
+    t.datetime "begin_time"
+    t.datetime "end_time"
     t.string   "location"
     t.string   "webpage"
     t.string   "condition"
     t.text     "description"
     t.string   "status"
-    t.string   "string"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "groups", force: true do |t|
-    t.integer  "events_id"
+    t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "groups_societies", id: false, force: true do |t|
-    t.integer "groups_id"
-    t.integer "societies_id"
+    t.integer "group_id"
+    t.integer "society_id"
   end
 
   create_table "joins", force: true do |t|
-    t.integer  "members_id"
-    t.integer  "societies_id"
+    t.integer  "member_id"
+    t.integer  "society_id"
     t.string   "role"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20140514093636) do
   end
 
   create_table "pictures", force: true do |t|
-    t.integer  "events_id"
+    t.integer  "event_id"
     t.string   "source"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 20140514093636) do
   end
 
   create_table "tickets", force: true do |t|
-    t.integer  "events_id"
+    t.integer  "event_id"
     t.decimal  "price"
     t.string   "purchase_location"
     t.datetime "strat_time"

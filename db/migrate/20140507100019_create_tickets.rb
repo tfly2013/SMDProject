@@ -1,7 +1,7 @@
 class CreateTickets < ActiveRecord::Migration
   def change
     create_table :tickets do |t|
-      t.belongs_to :events
+      t.belongs_to :event
       t.decimal :price
       t.string :purchase_location
       t.datetime :strat_time

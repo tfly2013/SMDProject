@@ -19,6 +19,7 @@ class MembersController < ApplicationController
 
   # GET /members/1/edit
   def edit
+    
   end
 
   # POST /members
