@@ -11,19 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140507174650) do
+ActiveRecord::Schema.define(version: 20140507101820) do
 
   create_table "comments", force: true do |t|
-    t.integer  "member_id"
-    t.integer  "event_id"
+    t.integer  "members_id"
+    t.integer  "events_id"
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "events", force: true do |t|
-    t.integer  "society_id"
-    t.integer  "group_id"
+    t.integer  "societies_id"
+    t.integer  "groups_id"
     t.string   "name"
     t.string   "type"
     t.datetime "time"
@@ -38,8 +38,7 @@ ActiveRecord::Schema.define(version: 20140507174650) do
   end
 
   create_table "groups", force: true do |t|
-    t.integer  "group_id"
-    t.integer  "event_id"
+    t.integer  "events_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -50,8 +49,8 @@ ActiveRecord::Schema.define(version: 20140507174650) do
   end
 
   create_table "joins", force: true do |t|
-    t.integer  "member_id"
-    t.integer  "society_id"
+    t.integer  "members_id"
+    t.integer  "societies_id"
     t.string   "role"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -59,18 +58,18 @@ ActiveRecord::Schema.define(version: 20140507174650) do
 
   create_table "members", force: true do |t|
     t.string   "email"
+    t.string   "encrypted_password"
+    t.string   "salt"
     t.string   "name"
     t.integer  "student_id"
     t.integer  "phone"
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "encrypted_password"
-    t.string   "salt"
   end
 
   create_table "pictures", force: true do |t|
-    t.integer  "event_id"
+    t.integer  "events_id"
     t.string   "source"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -86,7 +85,7 @@ ActiveRecord::Schema.define(version: 20140507174650) do
   end
 
   create_table "tickets", force: true do |t|
-    t.integer  "event_id"
+    t.integer  "events_id"
     t.decimal  "price"
     t.string   "purchase_location"
     t.datetime "strat_time"
