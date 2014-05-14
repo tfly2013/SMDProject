@@ -28,6 +28,7 @@ class MembersController < ApplicationController
     respond_to do |format|
       if @member.save
         flash[:notice] = "Member was successfully created."
+        session[:member] = @member
         format.html { redirect_to @member }
         format.json { render action: 'show', status: :created, location: @member }
       else
@@ -55,6 +56,7 @@ class MembersController < ApplicationController
   # DELETE /members/1
   # DELETE /members/1.json
   def destroy
+    session[:member] = nil
     @member.destroy
     respond_to do |format|
       format.html { redirect_to members_url }

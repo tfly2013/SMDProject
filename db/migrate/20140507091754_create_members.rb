@@ -2,8 +2,7 @@ class CreateMembers < ActiveRecord::Migration
   def change
     create_table :members do |t|
       t.string :email
-      t.string :encrypted_password
-      t.string :salt
+      t.string :password_digest
       t.string :name
       t.integer :student_id
       t.integer :phone
