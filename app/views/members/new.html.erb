@@ -19,10 +19,11 @@
   </div>
   <div class="field">
     <%= f.label :password %><br>
-    <%= f.text_field :password %>
+    <%= f.password_field :password %>
+  </div>
   <div class="field">
-    <%= f.label :password_confirmation %><br>
-    <%= f.text_field :password_confirmation %>
+    <%= f.label :password_confirmation, "Confirmation" %><br>
+    <%= f.password_field :password_confirmation %>
   </div>
   <div class="field">
     <%= f.label :name %><br>
@@ -30,14 +31,14 @@
   </div>
   <div class="field">
     <%= f.label :student_id %><br>
-    <%= f.number_field :student_id %>
+    <%= f.text_field :student_id %>
   </div>
   <div class="field">
     <%= f.label :phone %><br>
-    <%= f.number_field :phone %>
+    <%= f.text_field :phone %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Sign up" %>
   </div>
 <% end %>
 

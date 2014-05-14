@@ -1,2 +1,8 @@
 <div class="login">
+	<% if session[:member].nil? %>
+		<%= link_to "Login", login_path %>
+	<% else %>
+		<p>Welcome, <%= link_to session[:member].email, session[:member] %> 
+		<%= link_to "Log Out", logout_path %></p>
+	<% end %>
 </div>

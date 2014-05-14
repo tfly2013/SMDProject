@@ -1,4 +1,7 @@
 SMDProject::Application.routes.draw do
+
+  resources :sessions, only: [:new, :create, :destroy]
+  
   resources :comments
 
   resources :tickets
@@ -8,6 +11,10 @@ SMDProject::Application.routes.draw do
   resources :members
 
   resources :societies
+  
+  match "/registration", to:"members#new", via: [:get, :post]
+  match "/login", to: "sessions#new", via: [:get, :post]
+  match "/logout", to: "sessions#destroy", via: [:get, :post]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -24,11 +24,11 @@ class MembersController < ApplicationController
   # POST /members
   # POST /members.json
   def create
-    @member = Member.new(params.require(:member) \
-      .permit(:email, :password, :password_confirmation, :name, :student_id, :phone))
+    @member = Member.new(create_params)
     respond_to do |format|
       if @member.save
-        format.html { redirect_to @member, notice: 'Member was successfully created.' }
+        flash[:notice] = "Member was successfully created."
+        format.html { redirect_to @member }
         format.json { render action: 'show', status: :created, location: @member }
       else
         format.html { render action: 'new' }
@@ -41,8 +41,9 @@ class MembersController < ApplicationController
   # PATCH/PUT /members/1.json
   def update
     respond_to do |format|
-      if @member.update(params.require(:member).permit(:name, :student_id, :phone))
-        format.html { redirect_to @member, notice: 'Member was successfully updated.' }
+      if @member.update(update_params)
+        flash[:notice] = "Member was successfully updated."
+        format.html { redirect_to @member }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -65,5 +66,13 @@ class MembersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_member
       @member = Member.find(params[:id])
+    end
+    
+    def create_params
+      params.require(:member).permit(:email, :password, :password_confirmation, :name, :student_id, :phone)
+    end
+    
+    def update_params
+      params.require(:member).permit(:name, :student_id, :phone)
     end
 end
