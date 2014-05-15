@@ -16,7 +16,7 @@ class Member < ActiveRecord::Base
                        allow_nil: true,
                        on: :create
                        
-  validates :name, length: { maximum: 20 }
+  validates :name, length: { maximum: 30 }
   
   validates :student_id, length: { maximum: 6 }
   
