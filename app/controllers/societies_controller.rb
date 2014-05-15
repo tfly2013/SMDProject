@@ -16,6 +16,7 @@ class SocietiesController < ApplicationController
   def new
     if logged_in?
       @society = Society.new
+      @society.bearers.build
     else
       redirect_to login_path
     end    
@@ -23,18 +24,21 @@ class SocietiesController < ApplicationController
 
   # GET /societies/1/edit
   def edit
+    if !manager?(current_member)
+      flash.now[:error] = "Only admin of society can edit details about society."
+      render "show"
+    end
   end
 
   # POST /societies
   # POST /societies.json
   def create
-    @society = Society.new(society_params)
+    @society = Society.new(society_params)   
     respond_to do |format|
+      flash[:notice] = "Society was successfully created."
+      session[:society] = @society
       if @society.save
-        flash[:notice] = "Society was successfully created."
-        session[:society] = @society
-        join = Join.create(member_id: current_member.id, society_id: @society.id, role: "representative")
-        format.html { redirect_to @society }
+        format.html { redirect_to @event }
         format.json { render action: 'show', status: :created, location: @society }
       else
         format.html { render action: 'new' }

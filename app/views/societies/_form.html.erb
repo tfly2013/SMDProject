@@ -27,7 +27,14 @@
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>
+  
+  <h3>Office Bearers</h3>  
+  <%= f.fields_for :bearers do |builder| %>
+	<%= render 'bearer_fields', :f => builder %>
+  <% end %>  
+  <p><%= link_to_add_fields "Add a bearer", f, :bearers %></p>
   <div class="actions">
     <%= f.submit %>
   </div>
+  
 <% end %>

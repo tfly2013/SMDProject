@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140514093636) do
+ActiveRecord::Schema.define(version: 20140515021235) do
+
+  create_table "bearers", force: true do |t|
+    t.integer  "society_id"
+    t.string   "email"
+    t.string   "name"
+    t.integer  "phone"
+    t.string   "role"
+    t.boolean  "admin"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", force: true do |t|
     t.integer  "member_id"
@@ -52,6 +63,7 @@ ActiveRecord::Schema.define(version: 20140514093636) do
     t.integer  "member_id"
     t.integer  "society_id"
     t.string   "role"
+    t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -89,6 +101,8 @@ ActiveRecord::Schema.define(version: 20140514093636) do
     t.integer  "register_num"
     t.string   "website"
     t.text     "description"
+    t.string   "president"
+    t.integer  "members_count"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

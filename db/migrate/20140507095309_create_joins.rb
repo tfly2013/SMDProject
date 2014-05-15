@@ -4,6 +4,7 @@ class CreateJoins < ActiveRecord::Migration
       t.belongs_to :member
       t.belongs_to :society
       t.string :role
+      t.boolean :admin
 
       t.timestamps
     end
