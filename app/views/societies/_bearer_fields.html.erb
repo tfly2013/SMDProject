@@ -1,11 +1,7 @@
-  <fieldset>
-  	  <%= f.label :role %>
-	  <%= f.text_field :role %><br>
-	  <%= f.label :email %>
-	  <%= f.text_field :email %><br>
-	  <%= f.label :name %>
-	  <%= f.text_field :name %><br>
-	  <%= f.label :phone %>
-	  <%= f.text_field :phone %><br>
-	  <%= link_to_remove_fields "remove", f %>
-  </fieldset>
+<tr>
+  <td><%= f.text_field :role%></td>
+  <td><%= f.text_field :email %></td>
+  <td><%= f.text_field :name %></td>
+  <td><%= f.text_field :phone %></td>  
+  <td><%= link_to_remove_fields "Remove", f %></td>
+</tr>

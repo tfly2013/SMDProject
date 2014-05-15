@@ -16,11 +16,11 @@
 //= require_tree .
 function remove_fields(link) {
   $(link).prev("input[type=hidden]").val("1");
-  $(link).closest("fieldset").hide();
+  $(link).closest("tr").hide();
 }
 
 function add_fields(link, association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g");
-  $(link).parent().before(content.replace(regexp, new_id));
+  $(link).closest("table").children("tbody").children().last().after(content.replace(regexp, new_id));
 }

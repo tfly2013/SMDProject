@@ -16,7 +16,10 @@ class SocietiesController < ApplicationController
   def new
     if logged_in?
       @society = Society.new
-      @society.bearers.build
+      @president = @society.bearers.build
+      @president.role = "President"
+      @treasurer = @society.bearers.build
+      @treasurer.role = "Treasurer"
     else
       redirect_to login_path
     end    
@@ -33,7 +36,7 @@ class SocietiesController < ApplicationController
   # POST /societies
   # POST /societies.json
   def create
-    @society = Society.new(society_params)   
+    @society = Society.new(society_params)
     respond_to do |format|
       flash[:notice] = "Society was successfully created."
       session[:society] = @society
@@ -44,7 +47,7 @@ class SocietiesController < ApplicationController
         format.html { render action: 'new' }
         format.json { render json: @society.errors, status: :unprocessable_entity }
       end
-    end
+    end    
   end
 
   # PATCH/PUT /societies/1
@@ -70,7 +73,7 @@ class SocietiesController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_society

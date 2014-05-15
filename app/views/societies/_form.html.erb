@@ -29,12 +29,28 @@
   </div>
   
   <h3>Office Bearers</h3>  
-  <%= f.fields_for :bearers do |builder| %>
-	<%= render 'bearer_fields', :f => builder %>
-  <% end %>  
-  <p><%= link_to_add_fields "Add a bearer", f, :bearers %></p>
+  <table border="1">
+	  <thead>
+	    <tr>
+	      <th>Role</th>
+	      <th>Name</th>
+	      <th>Email</th>
+	      <th>Phone</th>
+	      <th></th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	  	<%= f.fields_for :bearers do |builder| %>
+			<%= render 'bearer_fields', :f => builder %>
+  		<% end %>	
+	  </tbody>	 
+	  <tfoot>  		
+	  	<tr>
+  			<td><%= link_to_add_fields "Add Bearer", f, :bearers %></td>
+  		</tr>  	
+  	  </tfoot> 
+  </table>
   <div class="actions">
     <%= f.submit %>
-  </div>
-  
+  </div>  
 <% end %>
