@@ -6,7 +6,8 @@ class Event < ActiveRecord::Base
   has_many :comments
   validates :name, length: { maximum: 30 }, presence: true, uniqueness: { case_sensitive: false }
   validates :type, length: { maximum: 15 }, presence: true
-  validates :time, presence: true
+  validates :begin_time, presence: true
+  validates :end_time, presence: true
   validates :location, presence: true
   validates :description, length: { maximum: 200 }
   validates :status, presence: true
