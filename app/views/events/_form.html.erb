@@ -12,14 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :society_id %><br>
-    <%= f.number_field :society_id %>
-  </div>
-  <div class="field">
-    <%= f.label :group_id %><br>
-    <%= f.number_field :group_id %>
-  </div>
-  <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
@@ -40,20 +32,12 @@
     <%= f.text_field :webpage %>
   </div>
   <div class="field">
-    <%= f.label :condition %><br>
-    <%= f.text_field :condition %>
-  </div>
-  <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>
   <div class="field">
     <%= f.label :status %><br>
-    <%= f.text_field :status %>
-  </div>
-  <div class="field">
-    <%= f.label :string %><br>
-    <%= f.text_field :string %>
+    <%= f.select :status, [['Planning','planning'],['Future event','future event'],['Cancelled event','cancelled event']]%>
   </div>
   <div class="actions">
     <%= f.submit %>
