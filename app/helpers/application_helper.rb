@@ -5,10 +5,10 @@ module ApplicationHelper
   end
 
   def current_member
-    @current_member ||= session[:member]
+    session[:member]
   end
   
   def current_society
-    @current_society ||= session[:society]
+    session[:society]
   end
 end

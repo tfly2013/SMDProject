@@ -56,22 +56,20 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :home, 'Home', root_path
     
     primary.item :societies, 'Societies', societies_path do |sec|
-      sec.item :my_societies, 'My Societies',"#" do |s|
-        s.item :society1, "Society1","#"
-        s.item :society2, "Society2","#"
+      sec.item :my_societies, 'My Societies',if: proc {logged_in?} do |s|
       end
-      sec.item :my_societies, 'Popular Societies',"#" do |s|
+      sec.item :hot_societies, 'Popular Societies' do |s|
         s.item :society1, "Society1","#"
         s.item :society2, "Society2","#"
       end
     end
   
     primary.item :events, 'Events', events_path do |sec|
-      sec.item :my_events, 'My Events',"#" do |e|
+      sec.item :my_events, 'My Events', if: proc {logged_in?} do |e|
         e.item :events1, "Event1", "#"
         e.item :events2, "Event2", "#"
       end
-      sec.item :my_societies, 'Hot Events', "#" do |e|
+      sec.item :hot_societies, 'Hot Events' do |e|
         e.item :events1, "Event1","#"
         e.item :events2, "Event2","#"
       end
