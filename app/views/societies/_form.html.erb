@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :register_num %><br>
-    <%= f.number_field :register_num %>
+    <%= f.text_field :register_num %>
   </div>
   <div class="field">
     <%= f.label :website %><br>
@@ -40,13 +40,13 @@
 	    </tr>
 	  </thead>
 	  <tbody>
-	  	<%= f.fields_for :bearers do |builder| %>
-			<%= render 'bearer_fields', :f => builder %>
+	  	<%= f.fields_for :members do |builder| %>
+			<%= render 'member_fields', :f => builder %>
   		<% end %>	
 	  </tbody>	 
 	  <tfoot>  		
 	  	<tr>
-  			<td><%= link_to_add_fields "Add Bearer", f, :bearers %></td>
+  			<td><%= link_to_add_member "Add Member", f %></td>
   		</tr>  	
   	  </tfoot> 
   </table>

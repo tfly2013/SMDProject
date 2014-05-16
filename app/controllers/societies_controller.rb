@@ -16,10 +16,8 @@ class SocietiesController < ApplicationController
   def new
     if logged_in?
       @society = Society.new
-      @president = @society.bearers.build
-      @president.role = "President"
-      @treasurer = @society.bearers.build
-      @treasurer.role = "Treasurer"
+      @society.members.build.joins.build.role = "President"
+      @society.members.build.joins.build.role = "Treasurer"
     else
       redirect_to login_path
     end    
@@ -37,11 +35,12 @@ class SocietiesController < ApplicationController
   # POST /societies.json
   def create
     @society = Society.new(society_params)
+    puts society_params
     respond_to do |format|
-      flash[:notice] = "Society was successfully created."
-      session[:society] = @society
       if @society.save
-        format.html { redirect_to @event }
+        flash[:notice] = "Society was successfully created."
+        session[:society] = @society
+        format.html { redirect_to @society }
         format.json { render action: 'show', status: :created, location: @society }
       else
         format.html { render action: 'new' }
@@ -55,7 +54,8 @@ class SocietiesController < ApplicationController
   def update
     respond_to do |format|
       if @society.update(society_params)
-        format.html { redirect_to @society, notice: 'Society was successfully updated.' }
+        flash[:notice] = "Society was successfully updated."
+        format.html { redirect_to @society }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -82,6 +82,14 @@ class SocietiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def society_params
-      params.require(:society).permit(:name, :register_num, :website, :description)
+      params.require(:society).permit(:name, :register_num, :website, :description).tap do |whitelisted|
+        params_member = Hash.new
+        params[:society][:members_attributes].each do |k,v|
+          password = (0...8).map { (65 + rand(26)).chr }.join
+          v = v.merge(:password => "#{password}", :password_confirmation => "#{password}")
+          params_member[k] = v
+        end              
+        whitelisted[:members_attributes] = params_member
+      end        
     end
 end

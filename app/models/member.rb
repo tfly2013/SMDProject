@@ -2,8 +2,9 @@ class Member < ActiveRecord::Base
   has_many :joins
   has_many :societies, through: :joins
   has_many :comments
-
   has_secure_password
+  
+  accepts_nested_attributes_for :joins, reject_if: proc { |attributes| attributes['role'].blank? }
   
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
@@ -16,7 +17,7 @@ class Member < ActiveRecord::Base
                        allow_nil: true,
                        on: :create
                        
-  validates :name, length: { maximum: 20 }
+  validates :name, length: { maximum: 30 }
   
   validates :student_id, length: { maximum: 6 }
   
