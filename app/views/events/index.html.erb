@@ -23,20 +23,20 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= event.society_id %></td>
-        <td><%= event.group_id %></td>
+        <td><%= event.societies_id %></td>
+        <td><%= event.groups_id %></td>
         <td><%= event.name %></td>
         <td><%= event.type %></td>
-        <td><%= event.time %></td>
+        <td><%= event.begin_time %></td>
+        <td><%= event.end_time %></td>
         <td><%= event.location %></td>
         <td><%= event.webpage %></td>
         <td><%= event.condition %></td>
         <td><%= event.description %></td>
         <td><%= event.status %></td>
-        <td><%= event.string %></td>
         <td><%= link_to 'Show', event %></td>
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

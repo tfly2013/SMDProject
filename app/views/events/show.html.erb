@@ -2,12 +2,12 @@
 
 <p>
   <strong>Society:</strong>
-  <%= @event.society_id %>
+  <%= @event.societies_id %>
 </p>
 
 <p>
   <strong>Group:</strong>
-  <%= @event.group_id %>
+  <%= @event.groups_id %>
 </p>
 
 <p>
@@ -21,9 +21,15 @@
 </p>
 
 <p>
-  <strong>Time:</strong>
-  <%= @event.time %>
+  <strong>Begin time:</strong>
+  <%= @event.begin_time %>
 </p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @event.end_time %>
+</p>
+
 
 <p>
   <strong>Location:</strong>
@@ -48,11 +54,6 @@
 <p>
   <strong>Status:</strong>
   <%= @event.status %>
-</p>
-
-<p>
-  <strong>String:</strong>
-  <%= @event.string %>
 </p>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
