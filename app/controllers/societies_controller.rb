@@ -16,10 +16,8 @@ class SocietiesController < ApplicationController
   def new
     if logged_in?
       @society = Society.new
-      @president = @society.bearers.new
-      @president.role = "President"
-      @treasurer = @society.bearers.new
-      @treasurer.role = "Treasurer"
+      @society.members.build.joins.build.role = "President"
+      @society.members.build.joins.build.role = "Treasurer"
     else
       redirect_to login_path
     end    
@@ -37,6 +35,7 @@ class SocietiesController < ApplicationController
   # POST /societies.json
   def create
     @society = Society.new(society_params)
+    puts society_params
     respond_to do |format|
       if @society.save
         flash[:notice] = "Society was successfully created."
@@ -44,7 +43,7 @@ class SocietiesController < ApplicationController
         format.html { redirect_to @society }
         format.json { render action: 'show', status: :created, location: @society }
       else
-        format.html { redirect_to new_society_path }
+        format.html { render action: 'new' }
         format.json { render json: @society.errors, status: :unprocessable_entity }
       end
     end    
@@ -83,6 +82,14 @@ class SocietiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def society_params
-      params.require(:society).permit(:name, :register_num, :website, :description, :bearers_attributes)
+      params.require(:society).permit(:name, :register_num, :website, :description).tap do |whitelisted|
+        params_member = Hash.new
+        params[:society][:members_attributes].each do |k,v|
+          password = (0...8).map { (65 + rand(26)).chr }.join
+          v = v.merge(:password => "#{password}", :password_confirmation => "#{password}")
+          params_member[k] = v
+        end              
+        whitelisted[:members_attributes] = params_member
+      end        
     end
 end
