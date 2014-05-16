@@ -3,9 +3,7 @@ class Member < ActiveRecord::Base
   has_many :societies, through: :joins
   has_many :comments
   has_secure_password
-  
-  accepts_nested_attributes_for :joins, reject_if: proc { |attributes| attributes['role'].blank? }
-  
+   
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
   validates :email, presence: true,

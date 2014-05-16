@@ -9,12 +9,12 @@ module SocietiesHelper
   end
   
   def link_to_add_member(name, f)
-    new_member = f.object.members.new
-    new_member.joins.new
-    fields = f.fields_for("members", new_member, :child_index => "new_member") do |builder|
-      render("member_fields", :f => builder)
+    @join = f.object.joins.new    
+    @join.build_member unless @join.member
+    fields = f.fields_for("joins", @join, :child_index => "new_join") do |builder|
+      render("join_fields", :f => builder)
     end
-    link_to_function(name, "add_fields(this, \"member\", \"#{escape_javascript(fields)}\")")
+    link_to_function(name, "add_fields(this, \"join\", \"#{escape_javascript(fields)}\")")
   end
   
 end

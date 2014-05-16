@@ -31,22 +31,23 @@
   <h3>Office Bearers</h3>  
   <table border="1">
 	  <thead>
-	    <tr>
-	      <th>Role</th>
+	    <tr>	      
 	      <th>Name</th>
 	      <th>Email</th>
 	      <th>Phone</th>
+	      <th>Role</th>
+	      <th>Admin</th>
 	      <th></th>
 	    </tr>
 	  </thead>
 	  <tbody>
-	  	<%= f.fields_for :members do |builder| %>
-			<%= render 'member_fields', :f => builder %>
+	  	<%= f.fields_for :joins do |builder| %>
+			<%= render 'join_fields', :f => builder %>
   		<% end %>	
 	  </tbody>	 
 	  <tfoot>  		
 	  	<tr>
-  			<td><%= link_to_add_member "Add Member", f %></td>
+  			<td><%= link_to_add_member "Add Bearer", f %></td>
   		</tr>  	
   	  </tfoot> 
   </table>

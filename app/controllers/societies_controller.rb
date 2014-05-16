@@ -16,8 +16,12 @@ class SocietiesController < ApplicationController
   def new
     if logged_in?
       @society = Society.new
-      @society.members.build.joins.build.role = "President"
-      @society.members.build.joins.build.role = "Treasurer"
+      president = @society.joins.build
+      president.role = "President"
+      president.build_member unless president.member
+      treasurer = @society.joins.build
+      treasurer.role = "Treasurer"
+      treasurer.build_member unless treasurer.member
     else
       redirect_to login_path
     end    
@@ -83,13 +87,20 @@ class SocietiesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def society_params
       params.require(:society).permit(:name, :register_num, :website, :description).tap do |whitelisted|
-        params_member = Hash.new
-        params[:society][:members_attributes].each do |k,v|
-          password = (0...8).map { (65 + rand(26)).chr }.join
-          v = v.merge(:password => "#{password}", :password_confirmation => "#{password}")
-          params_member[k] = v
-        end              
-        whitelisted[:members_attributes] = params_member
+        whitelisted[:joins_attributes] = add_password_to_member
       end        
+    end
+    
+    def add_password_to_member
+        params_joins = Hash.new
+        params[:society][:joins_attributes].each do |key,value|
+          password = (0...8).map { (65 + rand(26)).chr }.join
+          params_member = value[:member_attributes]          
+          params_member = params_member.merge(:password => "#{password}", :password_confirmation => "#{password}")
+          value[:member_attributes] = params_member
+          puts value
+          params_joins[key] = value
+        end
+        return params_joins
     end
 end
