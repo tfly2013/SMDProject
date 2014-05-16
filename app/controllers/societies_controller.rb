@@ -1,6 +1,14 @@
 class SocietiesController < ApplicationController
-  before_action :set_society, only: [:show, :edit, :update, :destroy]
+  before_action :set_society, only: [:join, :show, :edit, :update, :destroy]
 
+  # GET /societies/1/join
+  def join
+    Join.create(member_id: current_member.id, 
+        society_id: @society.id, role: "Member", admin: false)
+    flash.now[:notice] = "You have joined this society successfully!"
+    render "show"
+  end
+  
   # GET /societies
   # GET /societies.json
   def index
@@ -104,7 +112,8 @@ class SocietiesController < ApplicationController
             member = Member.find_by_email(params_member[:email])
             if member.nil?
               password = (0...8).map { (65 + rand(26)).chr }.join                  
-              params_member = params_member.merge(:password => "#{password}", :password_confirmation => "#{password}")
+              params_member = params_member.merge(:password => "#{password}",
+                             :password_confirmation => "#{password}")
               value[:member_attributes] = params_member
             else
               value.delete(:member_attributes)

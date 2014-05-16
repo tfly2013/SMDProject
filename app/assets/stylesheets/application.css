@@ -11,3 +11,20 @@
  *= require_self
  *= require_tree .
  */
+.logo{
+	float: left;
+}
+.title{
+	float: left;
+}
+.login{
+	float: right;
+}
+.menu{
+	float: left;
+	width: 25%;
+}
+.content{
+	float: right;
+	width: 75%;
+}

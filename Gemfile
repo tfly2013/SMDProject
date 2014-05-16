@@ -37,6 +37,10 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'activerecord-session_store'
 
+gem 'paperclip'
+
+gem "simple-navigation"
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

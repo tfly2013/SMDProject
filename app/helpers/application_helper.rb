@@ -7,4 +7,8 @@ module ApplicationHelper
   def current_member
     @current_member ||= session[:member]
   end
+  
+  def current_society
+    @current_society ||= session[:society]
+  end
 end

@@ -1,21 +1,55 @@
-<p id="notice"><%= notice %></p>
+<%= image_tag("default_logo.png", alt: "logo", class: "society_logo" ) %>
 
-<%= image_tag("society_logo.jpg", :alt => "logo") %>
-
-<p>
-  <strong>Name:</strong>
+<div class="society_details">
+<h1>
   <%= @society.name %>
-</p>
+</h1>
 
-<p>
-  <strong>Website:</strong>
+<h3>
+  Number of Members: 
+  <%= @society.joins.count %>
+</h3>
+
+<h3>
+  Website: 
   <%= @society.website %>
-</p>
+</h3>
 
-<p>
-  <strong>Description:</strong>
+<h3>
+  Description: 
   <%= @society.description %>
-</p>
+</h3>
+
+<% if !current_member.societies.include?(@society) %>
+	<%= button_to "Join",join_society_path %>
+<% end %>
+
+<% if admin? %>
+	<%= button_to "Edit",edit_society_path %>
+<% end %>
+</div>
+
+<h2>Office Bearer</h2>
+<table>
+	<thead>
+	    <tr>	  
+	      <th>Role</th>	    
+	      <th>Name</th>
+	      <th>Email</th>
+	      <th>Phone</th>	      
+	    </tr>
+	</thead>
+	<tbody>
+		<% @society.members.each do |member| %>
+		<tr>
+			<td><%= Join.find_by_member_id_and_society_id(member.id,@society.id).role %></td>
+			<td><%= member.name %></td>
+			<td><%= member.email %></td>
+			<td><%= member.phone %></td>
+		</tr>		
+		<% end %>
+	</tbody>
+</table>
 
 <%= link_to 'Edit', edit_society_path(@society) %> |
 <%= link_to 'Back', societies_path %>

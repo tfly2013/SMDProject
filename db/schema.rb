@@ -101,8 +101,6 @@ ActiveRecord::Schema.define(version: 20140515021235) do
     t.integer  "register_num"
     t.string   "website"
     t.text     "description"
-    t.string   "president"
-    t.integer  "members_count"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

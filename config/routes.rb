@@ -12,7 +12,11 @@ SMDProject::Application.routes.draw do
 
   resources :members
 
-  resources :societies
+  resources :societies do
+    member do
+      post 'join'
+  end
+  end
   
   match "/registration", to:"members#new", via: [:get, :post]
   match "/login", to: "sessions#new", via: [:get, :post]

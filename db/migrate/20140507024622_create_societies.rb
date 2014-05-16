@@ -5,8 +5,6 @@ class CreateSocieties < ActiveRecord::Migration
       t.integer :register_num
       t.string :website
       t.text :description
-      t.string :president
-      t.integer :members_count
 
       t.timestamps
     end

@@ -5,14 +5,15 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>  
   <%= stylesheet_link_tag "blueprint/print",media: "print" %>
   <%= stylesheet_link_tag "blueprint/screen",media: "screen" %>
-  <%= stylesheet_link_tag "listmenu", media: "all" %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 	<div class="container">
 		<%= render 'layouts/header' %>
-		<%= render 'layouts/menu' %>
+		<div class="menu">
+			<%= render_navigation %>
+		</div>		
 		<div class="content">
 		<% flash.each do |key, value| %>
 			<div class="<%= key %>"> <%= value %> </div>

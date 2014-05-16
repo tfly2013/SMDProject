@@ -3,12 +3,10 @@
 <table border="1">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Register num</th>
+      <th>Society Name</th>
+      <th>President</th>
+      <th>No. of Members</th>
       <th>Website</th>
-      <th>Description</th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -16,11 +14,9 @@
     <% @societies.each do |society| %>
       <tr>
         <td><%= link_to society.name, society %></td>
-        <td><%= society.register_num %></td>
-        <td><%= society.website %></td>
-        <td><%= society.description %></td>
-        <td><%= link_to 'Edit', edit_society_path(society) %></td>
-        <td><%= link_to 'Destroy', society, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= Join.find_by_society_id_and_role(society.id,"President").member.name %></td>
+        <td><%= society.joins.count %></td>
+        <td><%= society.website %></td>        
       </tr>
     <% end %>
   </tbody>
