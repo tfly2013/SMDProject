@@ -16,6 +16,9 @@ class SocietiesController < ApplicationController
   def new
     if logged_in?
       @society = Society.new
+      representative = @society.joins.build
+      representative.role = "Representative"
+      representative.member = current_member
       president = @society.joins.build
       president.role = "President"
       president.build_member unless president.member
@@ -29,7 +32,8 @@ class SocietiesController < ApplicationController
 
   # GET /societies/1/edit
   def edit
-    if !manager?(current_member)
+    join = Join.find_by_member_id_and_society_id(current_member.id, @society.id)
+    if join.nil? || !join.admin
       flash.now[:error] = "Only admin of society can edit details about society."
       render "show"
     end
@@ -44,6 +48,7 @@ class SocietiesController < ApplicationController
       if @society.save
         flash[:notice] = "Society was successfully created."
         session[:society] = @society
+        #Join.create(member_id: current_member.id, society_id: @society.id, role:"Representative", admin: true)
         format.html { redirect_to @society }
         format.json { render action: 'show', status: :created, location: @society }
       else
@@ -87,18 +92,26 @@ class SocietiesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def society_params
       params.require(:society).permit(:name, :register_num, :website, :description).tap do |whitelisted|
-        whitelisted[:joins_attributes] = add_password_to_member
+        whitelisted[:joins_attributes] = joins_attributes
       end        
     end
     
-    def add_password_to_member
+    def joins_attributes
         params_joins = Hash.new
         params[:society][:joins_attributes].each do |key,value|
-          password = (0...8).map { (65 + rand(26)).chr }.join
-          params_member = value[:member_attributes]          
-          params_member = params_member.merge(:password => "#{password}", :password_confirmation => "#{password}")
-          value[:member_attributes] = params_member
-          puts value
+          params_member = value[:member_attributes]
+          if !params_member.nil?
+            member = Member.find_by_email(params_member[:email])
+            if member.nil?
+              password = (0...8).map { (65 + rand(26)).chr }.join                  
+              params_member = params_member.merge(:password => "#{password}", :password_confirmation => "#{password}")
+              value[:member_attributes] = params_member
+            else
+              value.delete(:member_attributes)
+              value = value.merge(member_id: member.id)
+              puts value
+            end
+          end
           params_joins[key] = value
         end
         return params_joins

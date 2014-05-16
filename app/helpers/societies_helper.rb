@@ -1,7 +1,7 @@
 module SocietiesHelper
   
   def locked?(f)
-    ["President","Treasurer"].include?(f.object.role)
+    ["President","Treasurer","Representative"].include?(f.object.role)
   end
       
   def link_to_remove_member(name, f)

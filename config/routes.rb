@@ -1,5 +1,7 @@
 SMDProject::Application.routes.draw do
 
+  root "members#index"
+  
   resources :sessions, only: [:new, :create, :destroy]
   
   resources :comments
