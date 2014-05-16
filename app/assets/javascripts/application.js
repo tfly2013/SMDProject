@@ -24,3 +24,10 @@ function add_fields(link, association, content) {
   var regexp = new RegExp("new_" + association, "g");
   $(link).closest("table").children("tbody").children().last().after(content.replace(regexp, new_id));
 }
+
+var ready = function() {
+    $(".menu ul").superfish(); 
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);
