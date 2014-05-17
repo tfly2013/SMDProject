@@ -40,6 +40,8 @@ gem 'activerecord-session_store'
 
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 
+gem 'aws-sdk', '~> 1.5.7'
+
 gem "simple-navigation"
 
 gem 'jquery-ui-rails'

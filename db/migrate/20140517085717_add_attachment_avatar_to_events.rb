@@ -12,4 +12,5 @@ class AddAttachmentAvatarToEvents < ActiveRecord::Migration
     drop_attached_file :events, :avatar
 
   end
+  
 end
