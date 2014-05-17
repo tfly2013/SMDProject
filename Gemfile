@@ -38,7 +38,9 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'activerecord-session_store'
 
-gem 'paperclip'
+gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+
+gem 'rmagick', '2.13.2'
 
 gem "simple-navigation"
 
