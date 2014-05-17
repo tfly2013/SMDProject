@@ -99,7 +99,7 @@ class SocietiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def society_params
-      params.require(:society).permit(:name, :register_num, :website, :description).tap do |whitelisted|
+      params.require(:society).permit(:name, :register_num, :website, :description, :logo).tap do |whitelisted|
         whitelisted[:joins_attributes] = joins_attributes
       end        
     end

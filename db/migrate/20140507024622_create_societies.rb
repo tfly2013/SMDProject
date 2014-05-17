@@ -5,7 +5,8 @@ class CreateSocieties < ActiveRecord::Migration
       t.integer :register_num
       t.string :website
       t.text :description
-
+      t.attachment :logo
+      
       t.timestamps
     end
   end
