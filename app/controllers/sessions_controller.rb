@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
   
   def destroy
     flash.now[:notice] = "You are logged out."
-    session[:member] = nil
+    session[:member_id] = nil
     @title = "Login"
     render "new"
   end

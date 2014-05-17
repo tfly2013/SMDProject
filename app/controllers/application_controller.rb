@@ -3,12 +3,21 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
-  def logged_in?
-    !session[:member].nil?
+    def logged_in?
+    !session[:member_id].nil?
   end
 
   def current_member
-    @current_member ||= session[:member]
+    if (!session[:member_id].nil?)
+      return Member.find(session[:member_id])
+    end
+    
+  end
+  
+  def current_society
+    if (!session[:society_id].nil?)
+      return Society.find(session[:society_id])
+    end
   end
   
 end
