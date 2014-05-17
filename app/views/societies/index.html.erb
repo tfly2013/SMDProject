@@ -16,7 +16,7 @@
         <td><%= link_to society.name, society %></td>
         <td><%= Join.find_by_society_id_and_role(society.id,"President").member.name %></td>
         <td><%= society.joins.count %></td>
-        <td><%= society.website %></td>        
+        <td><%= link_to society.website, "http://#{society.website}" %></td>        
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Society', new_society_path %>
+<%= link_to 'New Society', new_society_path, id: "button" %>

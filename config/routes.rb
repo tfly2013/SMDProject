@@ -8,16 +8,15 @@ SMDProject::Application.routes.draw do
 
   resources :tickets
 
-  resources :events
-
   resources :members
 
   resources :societies do
     member do
+      resources :events
       get 'join'
-  end
-  end
-  
+    end
+  end  
+  match "/events", to:"pages#event", via: [:get, :post]
   match "/registration", to:"members#new", via: [:get, :post]
   match "/login", to: "sessions#new", via: [:get, :post]
   match "/logout", to: "sessions#destroy", via: [:get, :post]

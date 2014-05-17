@@ -64,7 +64,7 @@ SimpleNavigation::Configuration.run do |navigation|
       end
     end
   
-    primary.item :events, 'Events', events_path do |sec|
+    primary.item :events, 'Events' do |sec|
       sec.item :my_events, 'My Events', if: proc {logged_in?} do |e|
         e.item :events1, "Event1", "#"
         e.item :events2, "Event2", "#"

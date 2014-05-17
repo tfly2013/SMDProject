@@ -12,7 +12,7 @@
 
 <h3>
   Website: 
-  <%= @society.website %>
+  <%= link_to @society.website, "http://#{@society.website}" %>
 </h3>
 
 <h3>
@@ -21,11 +21,11 @@
 </h3>
 
 <% if !current_member.societies.include?(@society) %>
-	<%= link_to "Join",join_society_path(@society) %>
+	<%= link_to "Join",join_society_path(@society), id: "button" %>
 <% end %>
 
 <% if admin? %>
-	<%= link_to "Edit", edit_society_path(@society) %>
+	<%= link_to "Edit", edit_society_path(@society), id: "button" %>
 <% end %>
 </div>
 
@@ -50,5 +50,3 @@
 		<% end %>
 	</tbody>
 </table>
-
-<%= link_to 'Back', societies_path %>

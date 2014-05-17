@@ -32,7 +32,7 @@ var ready = function() {
 };
 
 $(function() {
-    $( "input[type=submit]" )
+    $( "input[type=submit], #button" )
       .button();
   });
 
