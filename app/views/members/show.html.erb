@@ -18,10 +18,27 @@
   <%= @member.phone %>
 </p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @member.status %>
-</p>
+<%= link_to 'Edit', edit_member_path(@member), id: "button" %>
 
-<%= link_to 'Edit', edit_member_path(@member) %> |
-<%= link_to 'Back', members_path %>
+<h2>My Societies </h2>
+<table>
+	<thead>
+	    <tr>	  	      	    
+	      <th>Soicety Name</th>
+	      <th>Role</th>
+	      <th>Website</th>	
+	      <th></th>      
+	    </tr>
+	</thead>
+	<tbody>
+		<% current_member.joins.each do |join| %>
+		<tr>
+			<% society = Society.find(join.society_id) %>
+			<td><%= link_to society.name, society %></td>
+			<td><%= join.role %></td>
+			<td><%= link_to society.website, "http://#{society.website}" %></td>
+			<td></td>
+		</tr>		
+		<% end %>
+	</tbody>
+</table>
