@@ -1,32 +1,29 @@
-<%= image_tag @society.logo.url %>
-
-<div class="society_details">
-<h1>
-  <%= @society.name %>
-</h1>
-
-<h3>
-  Number of Members: 
-  <%= @society.joins.count %>
-</h3>
-
-<h3>
-  Website: 
-  <%= link_to @society.website, "http://#{@society.website}" %>
-</h3>
-
-<h3>
-  Description: 
-  <%= @society.description %>
-</h3>
-
-<% if !current_member.societies.include?(@society) %>
-	<%= link_to "Join",join_society_path(@society), id: "button" %>
-<% end %>
-
-<% if admin? %>
-	<%= link_to "Edit", edit_society_path(@society), id: "button" %>
-<% end %>
+<div class="society_info">
+	<%= image_tag @society.logo.url(:medium), class: "society_logo" %>	
+	<div class="society_details">
+		<h1>
+		  <%= @society.name %>
+		</h1>	
+		<h5>
+		  Number of Members: 
+		  <%= @society.joins.count %>
+		</h5>	
+		<h5>
+		  Website: 
+		  <%= link_to @society.website, "http://#{@society.website}" %>
+		</h5>	
+		<h5>
+		  Description: 
+		  <%= @society.description %>
+		</h5>
+		<% if !current_member.societies.include?(@society) %>
+			<%= link_to "Join Society",join_society_path(@society), id: "button" %>
+		<% end %>
+		
+		<% if admin? %>
+			<%= link_to "Edit Society Details", edit_society_path(@society), id: "button" %>
+		<% end %>
+	</div>
 </div>
 
 <h2>Office Bearer</h2>

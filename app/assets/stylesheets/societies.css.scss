@@ -3,8 +3,15 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .society_logo{ 
   float: left;
-  margin-right: 40px
+  margin-right: 40px;
   }
 .society_details{
-  margin-bottom: 40px
+  float: left;
+  width: 450px;
+}
+.society_info{
+  height: 250px;
+}
+#button{
+  float:right;
 }
