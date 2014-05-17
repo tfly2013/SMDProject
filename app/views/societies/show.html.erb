@@ -21,11 +21,11 @@
 </h3>
 
 <% if !current_member.societies.include?(@society) %>
-	<%= button_to "Join",join_society_path %>
+	<%= link_to "Join",join_society_path(@society) %>
 <% end %>
 
 <% if admin? %>
-	<%= button_to "Edit",edit_society_path %>
+	<%= link_to "Edit", edit_society_path(@society) %>
 <% end %>
 </div>
 
@@ -51,5 +51,4 @@
 	</tbody>
 </table>
 
-<%= link_to 'Edit', edit_society_path(@society) %> |
 <%= link_to 'Back', societies_path %>

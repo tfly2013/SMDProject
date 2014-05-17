@@ -14,7 +14,7 @@ SMDProject::Application.routes.draw do
 
   resources :societies do
     member do
-      post 'join'
+      get 'join'
   end
   end
   

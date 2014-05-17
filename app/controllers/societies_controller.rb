@@ -55,7 +55,7 @@ class SocietiesController < ApplicationController
     respond_to do |format|
       if @society.save
         flash[:notice] = "Society was successfully created."
-        session[:society] = @society
+        session[:society_id] = @society.id
         #Join.create(member_id: current_member.id, society_id: @society.id, role:"Representative", admin: true)
         format.html { redirect_to @society }
         format.json { render action: 'show', status: :created, location: @society }

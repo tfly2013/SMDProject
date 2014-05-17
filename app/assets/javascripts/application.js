@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require jquery.ui.all
+//= require jquery.turbolinks
 function remove_fields(link) {
   $(link).prev("input[type=hidden]").val("1");
   $(link).closest("tr").hide();
@@ -28,6 +30,11 @@ function add_fields(link, association, content) {
 var ready = function() {
     $(".menu ul").superfish(); 
 };
+
+$(function() {
+    $( "input[type=submit]" )
+      .button();
+  });
 
 $(document).ready(ready);
 $(document).on('page:load', ready);

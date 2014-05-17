@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   def create
     member = Member.find_by_email(params[:sessions][:email])
     if member && member.authenticate(params[:sessions][:password])
-      session[:member] = member
+      session[:member_id] = member.id
       redirect_to member      
     else
       flash.now[:error] = "Invaild email/password combination." 

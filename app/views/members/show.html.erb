@@ -18,10 +18,6 @@
   <%= @member.phone %>
 </p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @member.status %>
-</p>
+<%= button_to 'Edit', edit_member_path(@member) %>
 
-<%= link_to 'Edit', edit_member_path(@member) %> |
 <%= link_to 'Back', members_path %>
