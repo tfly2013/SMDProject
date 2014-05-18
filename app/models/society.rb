@@ -11,7 +11,7 @@ class Society < ActiveRecord::Base
   
   has_attached_file :logo, styles: { medium: "200x200>" }, :default_url => "/images/missing.png" 
   
-  validates_attachment_content_type :logo, content_type: ['image/jpeg', 'image/jpeg', 'image/png']
+  validates_attachment_content_type :logo, content_type: ['image/jpeg', 'image/jpg', 'image/png']
   validates_attachment_size :logo, :less_than => 4.megabytes
   
   validates :name, length: { maximum: 30 }, presence: true, uniqueness: { case_sensitive: false }

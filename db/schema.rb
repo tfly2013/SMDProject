@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20140518062830) do
 
   create_table "reservations", force: true do |t|
     t.integer  "member_id"
-    t.integer  "ticket_id"
+    t.integer  "event_id"
     t.integer  "quantity"
     t.string   "status"
     t.datetime "created_at"

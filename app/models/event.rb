@@ -3,9 +3,12 @@ class Event < ActiveRecord::Base
   
   belongs_to :society
   has_one :group
+  has_one :ticket
   has_many :pictures
-  has_many :tickets
   has_many :comments
+  has_many :reservations
+  
+  accepts_nested_attributes_for :pictures, allow_destroy: true
   
   validates :name, length: { maximum: 30 }, presence: true, uniqueness: { case_sensitive: false }
   validates :type, length: { maximum: 15 }, presence: true
