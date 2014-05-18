@@ -4,8 +4,14 @@ module SocietiesHelper
     ["President","Treasurer","Representative"].include?(f.object.role)
   end
   
-  def admin?
-    Join.find_by_member_id_and_society_id(current_member.id, current_society.id).admin
+  def member_of?(society)
+    current_member.nil? || !current_member.societies.include?(society)
+  end
+  
+  def admin?(society)
+    unless current_member.nil?
+      Join.find_by_member_id_and_society_id(current_member.id, society.id).admin
+    end
   end
       
   def link_to_remove_member(name, f)

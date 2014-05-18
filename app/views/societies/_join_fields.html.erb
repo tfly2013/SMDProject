@@ -1,7 +1,7 @@
 <tr>
 	<%= f.fields_for :member do |g| %>
 		 <td><%= g.text_field :name %></td>
-		 <td><%= g.text_field :email %></td>
+		 <td><%= g.email_field :email %></td>
 		 <td><%= g.text_field :phone %></td> 
 	<% end %>   
 	<% if locked?(f) %>

@@ -18,9 +18,10 @@
 		<% flash.each do |key, value| %>
 			<div class="<%= key %>"> <%= value %> </div>
 		<% end %>
-		<%= yield %>	
+		<%= yield %>
 		</div>
 		<%= render 'layouts/footer' %>
+		<%= debug params %>
 	</div>
 </body>
 </html>

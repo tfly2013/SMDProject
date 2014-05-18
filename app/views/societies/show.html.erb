@@ -10,17 +10,17 @@
 		</h5>	
 		<h5>
 		  Website: 
-		  <%= link_to @society.website, "http://#{@society.website}" %>
+		  <%= link_to @society.website, @society.website %>
 		</h5>	
 		<h5>
 		  Description: 
 		  <%= @society.description %>
 		</h5>
-		<% if !current_member.societies.include?(@society) %>
+		<% if member_of?(@society) %>
 			<%= link_to "Join Society",join_society_path(@society), id: "button" %>
 		<% end %>
 		
-		<% if admin? %>
+		<% if admin?(@society) %>
 			<%= link_to "Edit Society Details", edit_society_path(@society), id: "button" %>
 		<% end %>
 	</div>

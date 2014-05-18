@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140514093636) do
+ActiveRecord::Schema.define(version: 20140518062830) do
 
   create_table "comments", force: true do |t|
     t.integer  "member_id"
@@ -78,6 +78,15 @@ ActiveRecord::Schema.define(version: 20140514093636) do
     t.datetime "updated_at"
   end
 
+  create_table "reservations", force: true do |t|
+    t.integer  "member_id"
+    t.integer  "ticket_id"
+    t.integer  "quantity"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "sessions", force: true do |t|
     t.string   "session_id", null: false
     t.text     "data"
@@ -103,10 +112,10 @@ ActiveRecord::Schema.define(version: 20140514093636) do
 
   create_table "tickets", force: true do |t|
     t.integer  "event_id"
+    t.integer  "total"
     t.decimal  "price"
-    t.string   "purchase_location"
-    t.datetime "strat_time"
-    t.datetime "valid_time"
+    t.datetime "time"
+    t.string   "location"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -2,10 +2,10 @@ class CreateTickets < ActiveRecord::Migration
   def change
     create_table :tickets do |t|
       t.belongs_to :event
+      t.integer :total
       t.decimal :price
-      t.string :purchase_location
-      t.datetime :strat_time
-      t.datetime :valid_time
+      t.datetime :time
+      t.string :location
 
       t.timestamps
     end

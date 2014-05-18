@@ -1,5 +1,7 @@
 SMDProject::Application.routes.draw do
 
+  resources :reservations
+
   root "members#index"
   
   resources :sessions, only: [:new, :create, :destroy]
