@@ -15,9 +15,7 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
-    3.times {
-      @event.pictures.build
-    }
+    3.times { @event.pictures.build }
   end
 
   # GET /events/1/edit
