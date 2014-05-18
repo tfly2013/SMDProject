@@ -16,6 +16,9 @@ SMDProject::Application.routes.draw do
       end      
       get 'join'
     end
+    collection do
+      get 'autocomplete'
+    end
   end  
   match "/events", to: "pages#event", via: [:get, :post], as: :eventslist
   match "/registration", to: "members#new", via: [:get, :post]

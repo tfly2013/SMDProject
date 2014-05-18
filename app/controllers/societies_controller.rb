@@ -7,7 +7,17 @@ class SocietiesController < ApplicationController
         society_id: @society.id, role: "Member", admin: false)
     flash.now[:notice] = "You have joined this society successfully!"
     render "show"
-  end
+  end  
+    
+  def autocomplete
+    societies = Society.all.order(:name)
+    respond_to do |format|
+      format.html
+      format.json { 
+        render json: societies.map(&:name)
+      }
+    end
+  end  
   
   # GET /societies
   # GET /societies.json
@@ -90,7 +100,7 @@ class SocietiesController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_society

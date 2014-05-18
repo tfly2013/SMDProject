@@ -33,7 +33,10 @@ var ready = function() {
 
 $(function() {
     $( "input[type=submit], #button" )
-      .button();
+      .button();      
+    $(".society_auto_complete").autocomplete({
+    source: '/societies/autocomplete.json',
+  	});
   });
 
 $(document).ready(ready);
