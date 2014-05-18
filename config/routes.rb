@@ -9,8 +9,10 @@ SMDProject::Application.routes.draw do
   resources :societies do
     member do
       resources :events do
-        resources :reservations
-        resources :comments
+        member do
+            resources :reservations
+            resources :comments
+        end
       end      
       get 'join'
     end
