@@ -46,8 +46,8 @@
   
   <%= f.label :picture, "Upload Pictures" %><br>
  
-  <%= fields_for :pictures do |p| %>  	
-  	<%= f.file_field :picture %> 
+  <%= f.fields_for :pictures do |p| %>  	
+  	<%= p.file_field :picture %> 
   <% end -%>
   
   <div class="actions">
