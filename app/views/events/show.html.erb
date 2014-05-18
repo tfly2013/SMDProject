@@ -1,15 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Society:</strong>
-  <%= @event.societies_id %>
-</p>
-
-<p>
-  <strong>Group:</strong>
-  <%= @event.groups_id %>
-</p>
-
 <%= image_tag @event.avatar.url %>
 <%= image_tag @event.avatar.url(:medium) %>
 <%= image_tag @event.avatar.url(:thumb) %>

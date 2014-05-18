@@ -27,5 +27,5 @@ SMDProject::Application.configure do
   # number of complex assets.
   config.assets.debug = true
   
-  Paperclip.options[:command_path] = "/c/WINDOWS/system32/"
+  Paperclip.options[:command_path] = "/c/Program Files/ImageMagick-6.8.9-Q16/"
 end
