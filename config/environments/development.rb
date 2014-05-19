@@ -27,5 +27,5 @@ SMDProject::Application.configure do
   # number of complex assets.
   config.assets.debug = true
   
-  Paperclip.options[:command_path] = "/c/WINDOWS/system32/"
+  #Paperclip.options[:command_path] = "/c/WINDOWS/system32/"
 end

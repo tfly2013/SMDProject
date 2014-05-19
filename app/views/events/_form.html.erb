@@ -39,20 +39,32 @@
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.select :status, [['Planning','planning'],['Future event','future event'],['Cancelled event','cancelled event']]%>
-  </div>
   
-  <div>
+  <div class="group" title="You can create a group and add societies to it where to share event with.">
+  	<%= f.label :add_society%>
   	<input type="text" class="society_auto_complete", params[:term]>
   </div>
   
+  <div class="group" style="margin-top:0em; font-family:Arial">
+  	Share list:
+    <div id="log" style="height: 200px; width: 300px; overflow: auto;" class="groups-content">
+    </div>
+  </div>
+   <div class="group" title="If you add societies to a new group, please give the new group a name.">
+  	<%= f.label :new_group_name%>
+  	<%= f.fields_for :group do |g| %>
+  	  <%= g.text_field :name %>
+  	<% end -%>
+  </div>
+  
+  <br><br>
+  <div class="picture">
   <%= f.label :picture, "Upload Pictures" %><br>
- 
   <%= f.fields_for :pictures do |p| %>  	
   	<%= p.file_field :picture %> 
   <% end -%>
+  </div>
+  <br><br>
   
   <div class="actions">
     <%= f.submit %>

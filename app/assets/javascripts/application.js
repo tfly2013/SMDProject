@@ -32,10 +32,23 @@ var ready = function() {
 };
 
 $(function() {
-    $( "input[type=submit], #button" )
-      .button();      
+	$( "input[type=submit], #button" )
+      .button();
+    
+    $( document ).tooltip();
+    
+    function log( message ) {
+      $( "<div/>" ).text( message ).prependTo( "#log" );
+      $( "#log" ).attr( "scrollTop", 0 );
+    }
+    $( "#log" ).draggable({ revert: true });
+    
     $(".society_auto_complete").autocomplete({
-    source: '/societies/autocomplete.json',
+      source: '/societies/autocomplete.json',
+      minLength: 0,
+      select: function( event, ui ) {
+    	log( "society:" + ui.item.value );
+      }
   	});
   });
 
