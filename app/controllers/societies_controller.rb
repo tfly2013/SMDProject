@@ -14,13 +14,7 @@ class SocietiesController < ApplicationController
     societies = Society.all.order(:name).where("name LIKE ?", "#{params[:term]}%")
     respond_to do |format|
       format.html
-<<<<<<< HEAD
-      format.json { 
-        render :json => societies.map(&:name)
-      }
-=======
       format.json { render json: societies.map(&:name) }
->>>>>>> branch 'master' of https://github.com/tfly2013/SMDProject.git
     end
   end  
   
