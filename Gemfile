@@ -48,8 +48,6 @@ gem 'jquery-ui-themes'
 
 gem "gritter"
 
-gem 'bxslider-rails'
-
 # Use unicorn as the app server
 # gem 'unicorn'
 
