@@ -1,6 +1,11 @@
 <div class="login">
 	<% if logged_in? %>
 		<p>Welcome, <%= link_to current_member.email, current_member %> 
+		<%if unread_message_count > 0 %>
+			<strong><%= link_to "Messages(#{unread_message_count})", messages_path(current_member), class: "pulsate" %></strong>
+		<% else %>
+			<%= link_to "Messages(#{unread_message_count})", messages_path(current_member) %>
+		<% end %>
 		<%= link_to "Log Out", logout_path %></p>
 	<% else %>
 		<%= link_to "Login", login_path %>		

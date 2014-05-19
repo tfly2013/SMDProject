@@ -16,4 +16,8 @@ module ApplicationHelper
       return Society.find(session[:society_id])
     end
   end
+  
+  def unread_message_count
+      current_member.received_message.where(read: false).count
+  end
 end

@@ -37,6 +37,7 @@ $(function() {
     $(".society_auto_complete").autocomplete({
     source: '/societies/autocomplete.json',
   	});
+  	$( ".pulsate" ).effect( "pulsate", null, 3000, null );
   });
 
 $(document).ready(ready);

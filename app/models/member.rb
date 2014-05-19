@@ -2,7 +2,9 @@ class Member < ActiveRecord::Base
   has_many :joins
   has_many :societies, through: :joins
   has_many :events, through: :societies
-  has_many :comments
+  has_many :comments 
+  has_many :sended_message, :class_name => "Message", :foreign_key => "sender_id"
+  has_many :received_message, :class_name => "Message", :foreign_key => "receiver_id"
   has_secure_password
   
   attr_accessor :old_password

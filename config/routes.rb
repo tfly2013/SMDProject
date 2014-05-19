@@ -6,6 +6,7 @@ SMDProject::Application.routes.draw do
 
   resources :members do
     member do
+      resources :messages
       get 'change_password'
       patch 'update_password'
     end

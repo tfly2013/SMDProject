@@ -16,11 +16,11 @@ class MembersController < ApplicationController
   
   # Post /members/1/update_password
   def update_password
-    if @member.authenticate(params[:old_password])
-      if (params[:password] == params[:password_confirmation])
-          @member.password_digest = BCrypt::Password.create(params[:password])
-          if @member.update
-            flash.now[:notice] = "Password changed successfully."
+    if @member.authenticate(params[:member][:old_password])
+      if (params[:member][:password] == params[:member][:password_confirmation])
+          @member.password_digest = BCrypt::Password.create(params[:member][:password])
+          if @member.save
+            flash[:notice] = "Password changed successfully."
             redirect_to @member
           else
             flash.now[:error] = "Password update failed."

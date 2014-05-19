@@ -1,10 +1,14 @@
 <div class="menu">
 	<%= render_navigation expand_all: true do |primary| %>
 		<% primary.item :home, 'Home', root_path do |sec| %>
-			<% sec.item :profile, 'Login', login_path ,unless: proc {logged_in?} %>
-			<% sec.item :profile, 'Sign Up', registration_path ,unless: proc {logged_in?} %>
-			<% sec.item :profile, 'Profile', url_for(current_member) ,if: proc {logged_in?} %>	
-			<% sec.item :profile, 'Log Out', logout_path ,if: proc {logged_in?} %>
+			<%if logged_in? %>
+				<% sec.item :profile, 'Profile', url_for(current_member) %>
+				<% sec.item :profile, 'Message', messages_path(current_member) %>	
+				<% sec.item :profile, 'Log Out', logout_path %>
+			<% else %>
+				<% sec.item :profile, 'Login', login_path %>
+				<% sec.item :profile, 'Sign Up', registration_path %>
+			<% end %>
 		<% end %>		
 		<% primary.item :societies, 'Societies', societies_path do |sec| %>
 			<% sec.item :my_societies, 'My Societies',if: proc {logged_in?} do |s| %>
