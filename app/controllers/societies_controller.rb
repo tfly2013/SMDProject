@@ -10,7 +10,7 @@ class SocietiesController < ApplicationController
   end  
     
   def autocomplete
-    societies = Society.all.order(:name)
+    societies = Society.all.order(:name).where("name LIKE ?", "%#{params[:term]}%")
     respond_to do |format|
       format.html
       format.json { 
