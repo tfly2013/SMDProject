@@ -16,5 +16,4 @@ class Event < ActiveRecord::Base
   validates :end_time, presence: true
   validates :location, presence: true
   validates :description, length: { maximum: 200 }
-  validates :status, presence: true
 end

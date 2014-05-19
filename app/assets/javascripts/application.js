@@ -31,6 +31,11 @@ function add_fields(link, association, content) {
 var ready = function() {
     $(".menu ul").superfish(); 
 };
+  
+function log( essage) {
+      $( "<div/>" ).text( message ).prependTo( "#log" );
+      $( "#log" ).attr( "scrollTop", 0 );
+    }
 
 $(function() {
     $( "input[type=submit], #button" )
@@ -39,10 +44,17 @@ $(function() {
       .button({icons: { primary: "ui-icon-mail-closed" }});       
     $(".society_auto_complete").autocomplete({
     source: '/societies/autocomplete.json',
+    minLength: 0,
+    select: function( event, ui ) {
+    	log( "society:" + ui.item.value );
+      }
   	});
-  	$( ".pulsate" ).effect( "pulsate", null, 3000, null );
-  	
+  	$( ".pulsate" ).effect( "pulsate", null, 3000, null ); 	
+    
+    $( document ).tooltip();
+    $( "#log" ).draggable({ revert: true });
   });
+
 
 $(document).ready(ready);
 $(document).on('page:load', ready);
