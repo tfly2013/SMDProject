@@ -44,6 +44,10 @@ gem "simple-navigation"
 
 gem 'jquery-ui-rails'
 
+gem 'jquery-ui-themes'
+
+gem "gritter"
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

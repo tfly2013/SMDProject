@@ -56,7 +56,11 @@ GEM
     coffee-script-source (1.7.0)
     erubis (2.7.0)
     execjs (2.0.2)
+    gritter (1.1.0)
     hike (1.2.3)
+    httparty (0.13.1)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.9)
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
@@ -69,6 +73,8 @@ GEM
       turbolinks
     jquery-ui-rails (4.2.1)
       railties (>= 3.2.16)
+    jquery-ui-themes (0.0.11)
+      httparty
     json (1.8.1)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -76,6 +82,7 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.10.0)
+    multi_xml (0.5.5)
     polyglot (0.3.4)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -139,10 +146,12 @@ DEPENDENCIES
   activerecord-session_store
   bcrypt (~> 3.1.7)
   coffee-rails (~> 4.0.0)
+  gritter
   jbuilder (~> 1.2)
   jquery-rails
   jquery-turbolinks
   jquery-ui-rails
+  jquery-ui-themes
   paperclip!
   rails (= 4.0.4)
   sass-rails (~> 4.0.2)

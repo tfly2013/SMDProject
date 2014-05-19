@@ -16,6 +16,7 @@
 //= require_tree .
 //= require jquery.ui.all
 //= require jquery.turbolinks
+//= require gritter
 function remove_fields(link) {
   $(link).prev("input[type=hidden]").val("1");
   $(link).closest("tr").hide();
@@ -34,10 +35,13 @@ var ready = function() {
 $(function() {
     $( "input[type=submit], #button" )
       .button();      
+    $( ".message" )
+      .button({icons: { primary: "ui-icon-mail-closed" }});       
     $(".society_auto_complete").autocomplete({
     source: '/societies/autocomplete.json',
   	});
   	$( ".pulsate" ).effect( "pulsate", null, 3000, null );
+  	
   });
 
 $(document).ready(ready);
