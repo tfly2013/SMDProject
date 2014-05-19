@@ -53,27 +53,7 @@ SimpleNavigation::Configuration.run do |navigation|
     #                            when the item should be highlighted, you can set a regexp which is matched
     #                            against the current URI.  You may also use a proc, or the symbol <tt>:subpath</tt>.
     #
-    primary.item :home, 'Home', root_path
     
-    primary.item :societies, 'Societies', societies_path do |sec|
-      sec.item :my_societies, 'My Societies',if: proc {logged_in?} do |s|
-      end
-      sec.item :hot_societies, 'Popular Societies' do |s|
-        s.item :society1, "Society1","#"
-        s.item :society2, "Society2","#"
-      end
-    end
-  
-    primary.item :events, 'Events' do |sec|
-      sec.item :my_events, 'My Events', if: proc {logged_in?} do |e|
-        e.item :events1, "Event1", "#"
-        e.item :events2, "Event2", "#"
-      end
-      sec.item :hot_societies, 'Hot Events' do |e|
-        e.item :events1, "Event1","#"
-        e.item :events2, "Event2","#"
-      end
-    end
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
     # Conditions are part of the options. They are evaluated in the context of the views,
     # thus you can use all the methods and vars you have available in the views.

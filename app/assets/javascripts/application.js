@@ -46,8 +46,6 @@ $(function() {
     }
     $( "#log" ).draggable({ revert: true });
     
-    $( ".message" )
-      .button({icons: { primary: "ui-icon-mail-closed" }});       
     $(".society_auto_complete").autocomplete({
       source: '/societies/autocomplete.json',
       minLength: 0,
@@ -55,6 +53,10 @@ $(function() {
     	log( "society:" + ui.item.value );
       }
   	});
+    
+    $( ".message" )
+      .button({icons: { primary: "ui-icon-mail-closed" }});
+  	
   	$( ".pulsate" ).effect( "pulsate", null, 3000, null );
   	
   });

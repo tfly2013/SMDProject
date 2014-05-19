@@ -18,6 +18,7 @@ SMDProject::Application.routes.draw do
         member do
             resources :reservations
             resources :comments
+            resources :groups
         end
       end      
       get 'join'
