@@ -1,13 +1,22 @@
 class SocietiesController < ApplicationController
   before_action :set_society, only: [:join, :show, :edit, :update, :destroy]
-
+  before_action :require_login, only: [:join, :edit, :update, :destroy]
+  
   # GET /societies/1/join
   def join
     Join.create(member_id: current_member.id, 
         society_id: @society.id, role: "Member", admin: false)
-    flash.now[:notice] = "You have joined this society successfully!"
+    gflash :notice => "You have joined this society successfully!"
     render "show"
-  end
+  end  
+    
+  def autocomplete
+    societies = Society.all.order(:name).where("name LIKE ?", "#{params[:term]}%")
+    respond_to do |format|
+      format.html
+      format.json { render json: societies.map(&:name) }
+    end
+  end  
   
   # GET /societies
   # GET /societies.json
@@ -22,7 +31,6 @@ class SocietiesController < ApplicationController
 
   # GET /societies/new
   def new
-    if logged_in?
       @society = Society.new
       representative = @society.joins.build
       representative.role = "Representative"
@@ -33,16 +41,13 @@ class SocietiesController < ApplicationController
       treasurer = @society.joins.build
       treasurer.role = "Treasurer"
       treasurer.build_member unless treasurer.member
-    else
-      redirect_to login_path
-    end    
   end
 
   # GET /societies/1/edit
   def edit
     join = Join.find_by_member_id_and_society_id(current_member.id, @society.id)
     if join.nil? || !join.admin
-      flash.now[:error] = "Only admin of society can edit details about society."
+      flash :error => "Only admin of society can edit details about society."
       render "show"
     end
   end
@@ -54,7 +59,7 @@ class SocietiesController < ApplicationController
     puts society_params
     respond_to do |format|
       if @society.save
-        flash[:notice] = "Society was successfully created."
+        gflash :error => "Society was successfully created."
         session[:society_id] = @society.id
         #Join.create(member_id: current_member.id, society_id: @society.id, role:"Representative", admin: true)
         format.html { redirect_to @society }
@@ -71,7 +76,7 @@ class SocietiesController < ApplicationController
   def update
     respond_to do |format|
       if @society.update(society_params)
-        flash[:notice] = "Society was successfully updated."
+        gflash :notice => "Society was successfully updated."
         format.html { redirect_to @society }
         format.json { head :no_content }
       else
@@ -90,7 +95,7 @@ class SocietiesController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_society
