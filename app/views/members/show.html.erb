@@ -17,10 +17,12 @@
   <strong>Phone:</strong>
   <%= @member.phone %>
 </p>
+<% if @member == current_member%>
+	<%= link_to 'Edit Details', edit_member_path(@member), id: "button" %>
+	<%= link_to 'Change Password', change_password_member_path(@member), id: "button" %>
+<% end %>
 
-<%= link_to 'Edit', edit_member_path(@member), id: "button" %>
-
-<h2>My Societies </h2>
+<h2>Societies </h2>
 <table>
 	<thead>
 	    <tr>	  	      	    

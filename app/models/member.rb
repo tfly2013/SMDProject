@@ -4,6 +4,8 @@ class Member < ActiveRecord::Base
   has_many :events, through: :societies
   has_many :comments
   has_secure_password
+  
+  attr_accessor :old_password
    
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   

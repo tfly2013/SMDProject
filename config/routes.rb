@@ -4,7 +4,12 @@ SMDProject::Application.routes.draw do
   
   resources :sessions, only: [:new, :create, :destroy]  
 
-  resources :members
+  resources :members do
+    member do
+      get 'change_password'
+      patch 'update_password'
+    end
+  end
 
   resources :societies do
     member do
@@ -24,7 +29,6 @@ SMDProject::Application.routes.draw do
   match "/registration", to: "members#new", via: [:get, :post]
   match "/login", to: "sessions#new", via: [:get, :post]
   match "/logout", to: "sessions#destroy", via: [:get, :post]
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

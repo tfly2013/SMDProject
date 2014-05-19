@@ -1,6 +1,7 @@
 class SocietiesController < ApplicationController
   before_action :set_society, only: [:join, :show, :edit, :update, :destroy]
-
+  before_action :require_login, only: [:join, :edit, :update, :destroy]
+  
   # GET /societies/1/join
   def join
     Join.create(member_id: current_member.id, 
@@ -10,12 +11,10 @@ class SocietiesController < ApplicationController
   end  
     
   def autocomplete
-    societies = Society.all.order(:name).where("name LIKE ?", "%#{params[:term]}%")
+    societies = Society.all.order(:name).where("name LIKE ?", "#{params[:term]}%")
     respond_to do |format|
       format.html
-      format.json { 
-        render json: societies.map(&:name)
-      }
+      format.json { render json: societies.map(&:name) }
     end
   end  
   
@@ -32,7 +31,6 @@ class SocietiesController < ApplicationController
 
   # GET /societies/new
   def new
-    if logged_in?
       @society = Society.new
       representative = @society.joins.build
       representative.role = "Representative"
@@ -43,9 +41,6 @@ class SocietiesController < ApplicationController
       treasurer = @society.joins.build
       treasurer.role = "Treasurer"
       treasurer.build_member unless treasurer.member
-    else
-      redirect_to login_path
-    end    
   end
 
   # GET /societies/1/edit

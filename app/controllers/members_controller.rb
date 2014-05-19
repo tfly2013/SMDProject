@@ -1,6 +1,41 @@
 class MembersController < ApplicationController
-  before_action :set_member, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_member, only: [:show, :edit, :update, :destroy, :change_password, :update_password]
+  before_action :require_login, only: [:show, :edit, :update, :destroy, :change_password, :update_password]
+  before_action :require_self, only: [:edit, :update, :destroy, :change_password, :update_password]
+  
+  def require_self
+    if current_member != @member
+      redirect_to @member
+    end
+  end
+  
+  # GET /members/1/change_password
+  def change_password
+    
+  end
+  
+  # Post /members/1/update_password
+  def update_password
+    if @member.authenticate(params[:old_password])
+      if (params[:password] == params[:password_confirmation])
+          @member.password_digest = BCrypt::Password.create(params[:password])
+          if @member.update
+            flash.now[:notice] = "Password changed successfully."
+            redirect_to @member
+          else
+            flash.now[:error] = "Password update failed."
+            render 'change_password'
+          end
+      else
+            flash.now[:error] = "New password and password confirmation mismatch."
+            render 'change_password'
+      end
+    else
+        flash.now[:error] = "Invalid old password."
+        render 'change_password'
+    end
+  end
+  
   # GET /members
   # GET /members.json
   def index
@@ -78,4 +113,5 @@ class MembersController < ApplicationController
     def update_params
       params.require(:member).permit(:name, :student_id, :phone)
     end
+      
 end

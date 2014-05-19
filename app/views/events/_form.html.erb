@@ -44,15 +44,14 @@
     <%= f.select :status, [['Planning','planning'],['Future event','future event'],['Cancelled event','cancelled event']]%>
   </div>
   
-  <div>
-  	<input type="text" class="society_auto_complete", params[:term]>
-  </div>
-  
-  <%= f.label :picture, "Upload Pictures" %><br>
- 
+  <%= f.label :picture, "Upload Pictures" %><br> 
   <%= f.fields_for :pictures do |p| %>  	
   	<%= p.file_field :picture %> 
   <% end -%>
+  
+  <div>
+  	<input type="text" class="society_auto_complete", params[:term]>
+  </div>
   
   <div class="actions">
     <%= f.submit %>
