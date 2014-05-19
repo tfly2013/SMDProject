@@ -1,7 +1,7 @@
 SMDProject::Application.routes.draw do
 
-  root "members#index"
-  
+  root "pages#index"
+    
   resources :sessions, only: [:new, :create, :destroy]  
 
   resources :members do
