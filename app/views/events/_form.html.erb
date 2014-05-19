@@ -40,7 +40,6 @@
     <%= f.text_area :description %>
   </div>
   
-<<<<<<< HEAD
   <div class="group" title="You can create a group and add societies to it where to share event with.">
   	<%= f.label :add_society%>
   	<input type="text" class="society_auto_complete", params[:term]>
@@ -61,9 +60,7 @@
   <br><br>
   <div class="picture">
   <%= f.label :picture, "Upload Pictures" %><br>
-=======
-  <%= f.label :picture, "Upload Pictures" %><br> 
->>>>>>> branch 'master' of https://github.com/tfly2013/SMDProject.git
+
   <%= f.fields_for :pictures do |p| %>  	
   	<%= p.file_field :picture %> 
   <% end -%>
