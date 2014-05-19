@@ -12,10 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bxslider
 //= require turbolinks
 //= require_tree .
 //= require jquery.ui.all
 //= require jquery.turbolinks
+//= require gritter
+
 function remove_fields(link) {
   $(link).prev("input[type=hidden]").val("1");
   $(link).closest("tr").hide();
@@ -43,6 +46,8 @@ $(function() {
     }
     $( "#log" ).draggable({ revert: true });
     
+    $( ".message" )
+      .button({icons: { primary: "ui-icon-mail-closed" }});       
     $(".society_auto_complete").autocomplete({
       source: '/societies/autocomplete.json',
       minLength: 0,
@@ -50,6 +55,8 @@ $(function() {
     	log( "society:" + ui.item.value );
       }
   	});
+  	$( ".pulsate" ).effect( "pulsate", null, 3000, null );
+  	
   });
 
 $(document).ready(ready);

@@ -11,21 +11,34 @@
     </div>
   <% end %>
 
+  <p>
+    <strong>Title:</strong>
+    <%= @reservation.event %>
+  </p>
+  <p>
+    <strong>Society:</strong>
+    <%= @reservation.event %>
+  </p>
+  <p>
+    <strong>Location:</strong>
+    <%= @reservation.event %>
+  </p>
+  <p>
+    <strong>Avaliable Tickets:</strong>
+    <%= @reservation.event %>
+  </p>
+  <p>
+    <strong>Price:</strong>
+    <%= @reservation.event %>
+  </p>
+  <p>
+    <strong>Description:</strong>
+    <%= @reservation.event %>
+  </p>
+
   <div class="field">
-    <%= f.label :member_id %><br>
-    <%= f.text_field :member_id %>
-  </div>
-  <div class="field">
-    <%= f.label :ticket_id %><br>
-    <%= f.text_field :ticket_id %>
-  </div>
-  <div class="field">
-    <%= f.label :quantity %><br>
+    <%= f.label :quantity %> (Maximum:4 per member)<br>
     <%= f.number_field :quantity %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.text_field :status %>
   </div>
   <div class="actions">
     <%= f.submit %>
