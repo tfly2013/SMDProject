@@ -17,7 +17,7 @@
 				<% end %>
 			<% end %>
 			<% sec.item :hot_societies, 'Popular Societies' do |s| %>
-				<% Society.take(10).each do |society| %>
+				<% Society.all.sort_by{|society| society.joins.count}.take(10).each do |society| %>
 					<% s.item :society, society.name, url_for(society) %>
 				<% end %>
 			<% end %>

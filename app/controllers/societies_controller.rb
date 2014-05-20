@@ -6,7 +6,7 @@ class SocietiesController < ApplicationController
   def join
     Join.create(member_id: current_member.id, 
         society_id: @society.id, role: "Member", admin: false)
-    gflash :notice => "You have joined this society successfully!"
+    gflash :now, :notice => "You have joined this society successfully!"
     render "show"
   end  
     
@@ -47,7 +47,7 @@ class SocietiesController < ApplicationController
   def edit
     join = Join.find_by_member_id_and_society_id(current_member.id, @society.id)
     if join.nil? || !join.admin
-      flash :error => "Only admin of society can edit details about society."
+      flash :now, :error => "Only admin of society can edit details about society."
       render "show"
     end
   end
@@ -59,7 +59,7 @@ class SocietiesController < ApplicationController
     puts society_params
     respond_to do |format|
       if @society.save
-        gflash :error => "Society was successfully created."
+        gflash :now, :notice => "Society was successfully created."
         session[:society_id] = @society.id
         #Join.create(member_id: current_member.id, society_id: @society.id, role:"Representative", admin: true)
         format.html { redirect_to @society }
@@ -76,7 +76,7 @@ class SocietiesController < ApplicationController
   def update
     respond_to do |format|
       if @society.update(society_params)
-        gflash :notice => "Society was successfully updated."
+        gflash :now, :notice => "Society was successfully updated."
         format.html { redirect_to @society }
         format.json { head :no_content }
       else

@@ -28,7 +28,7 @@ class ReservationsController < ApplicationController
 
     respond_to do |format|
       if @reservation.save
-        gflash :notice => 'Reservation was successfully created.'
+        gflash :now, :notice => 'Reservation was successfully created.'
         format.html { redirect_to @reservation }
         format.json { render action: 'show', status: :created, location: @reservation }
       else
@@ -43,7 +43,7 @@ class ReservationsController < ApplicationController
   def update
     respond_to do |format|
       if @reservation.update(reservation_params)
-        gflash :notice => 'Reservation was successfully updated.'
+        gflash :now, :notice => 'Reservation was successfully updated.'
         format.html { redirect_to @reservation }
         format.json { head :no_content }
       else

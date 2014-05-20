@@ -20,18 +20,18 @@ class MembersController < ApplicationController
       if (params[:member][:password] == params[:member][:password_confirmation])
           @member.password_digest = BCrypt::Password.create(params[:member][:password])
           if @member.save
-            gflash :notice => "Password changed successfully."
+            gflash :now, :notice => "Password changed successfully."
             redirect_to @member
           else
-            gflash :error => "Password update failed."
+            gflash :now, :error => "Password update failed."
             render 'change_password'
           end
       else
-            gflash :error => "New password and password confirmation mismatch."
+            gflash :now, :error => "New password and password confirmation mismatch."
             render 'change_password'
       end
     else
-        gflash :error => "Invalid old password."
+        gflash :now, :error => "Invalid old password."
         render 'change_password'
     end
   end
@@ -63,7 +63,7 @@ class MembersController < ApplicationController
     @member = Member.new(create_params)
     respond_to do |format|
       if @member.save
-        gflash :notice =>"Member was successfully created."
+        gflash :now, :notice =>"Member was successfully created."
         session[:member_id] = @member.id
         format.html { redirect_to @member }
         format.json { render action: 'show', status: :created, location: @member }
@@ -79,7 +79,7 @@ class MembersController < ApplicationController
   def update
     respond_to do |format|
       if @member.update(update_params)
-        gflash :notice => "Member was successfully updated."
+        gflash :now, :notice => "Member was successfully updated."
         format.html { redirect_to @member }
         format.json { head :no_content }
       else

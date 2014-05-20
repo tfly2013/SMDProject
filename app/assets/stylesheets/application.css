@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require bxslider
  *= require_tree .
  *= require jquery.ui.all
  *= require gritter

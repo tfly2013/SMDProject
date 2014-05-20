@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        gflash :notice => 'Comment was successfully created.'
+        gflash :now,  :notice => 'Comment was successfully created.'
         format.html { redirect_to @comment }
         format.json { render action: 'show', status: :created, location: @comment }
       else
@@ -43,7 +43,7 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        gflash :notice => 'Comment was successfully updated.'
+        gflash :now,  :notice => 'Comment was successfully updated.'
         format.html { redirect_to @comment }
         format.json { head :no_content }
       else

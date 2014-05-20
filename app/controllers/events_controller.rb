@@ -29,7 +29,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        gflash :notice => 'Event was successfully created.'
+        gflash :now,  :notice => 'Event was successfully created.'
         format.html { redirect_to @event }
         format.json { render action: 'show', status: :created, location: @event }
       else
@@ -45,7 +45,7 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        gflash :notice => 'Event was successfully updated.'
+        gflash :now,  :notice => 'Event was successfully updated.'
         format.html { redirect_to @event }
         format.json { head :no_content }
       else
