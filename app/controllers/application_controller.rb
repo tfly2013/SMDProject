@@ -25,4 +25,5 @@ class ApplicationController < ActionController::Base
       return Society.find(session[:society_id])
     end
   end
+  
 end
