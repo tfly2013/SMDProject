@@ -54,11 +54,12 @@ $(function() {
     	log( "society:" + ui.item.value );
       }
   	});
+  	$( "#log" ).draggable({ revert: true });
+  	
   	$( ".pulsate" ).effect( "pulsate", null, 3000, null ); 	
     
     $( document ).tooltip();
-    $( "#log" ).draggable({ revert: true });
-  });
+  }); 
 
 
 $(document).ready(ready);
