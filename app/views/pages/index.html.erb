@@ -1,10 +1,25 @@
 <ul class="bxslider">
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
+  <li><%= image_tag "test1.jpg" %></li>
+  <li><%= image_tag "test2.jpg" %></li>
+  <li><%= image_tag "test3.jpg" %></li>
 </ul>
 
-<div>
-	
+<div class="accordion">
+	<% @societies.try(:each) do |society| %>
+		<h3><%= society.name %></h3>
+		<div>
+			<%= image_tag @society.logo.url(:medium) %>
+			<%= society.description %>
+		</div>
+	<% end %>	
+</div>
+
+<div class="accordion">
+	<% @events.try(:each) do |event| %>
+		<h3><%= event.name %></h3>
+		<div>
+			<%= image_tag event.pictures.first.picture.url(:medium) %>
+			<%= event.description %>
+		</div>
+	<% end %>	
 </div>

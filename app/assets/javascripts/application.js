@@ -31,6 +31,9 @@ function add_fields(link, association, content) {
 
 var ready = function() {
     $(".menu ul").superfish(); 
+    $('.bxslider').bxSlider({
+  	auto: true,
+	});
 };
   
 function log( essage) {
@@ -39,10 +42,11 @@ function log( essage) {
     }
 
 $(function() {
-    $( "input[type=submit], #button" )
-      .button();      
-    $( ".message" )
-      .button({icons: { primary: "ui-icon-mail-closed" }});       
+    $( "input[type=submit], #button" ).button();          
+    $( ".message" ).button({icons: { primary: "ui-icon-mail-closed" }});  
+     
+    $( ".accordion" ).accordion();
+    
     $(".society_auto_complete").autocomplete({
     source: '/societies/autocomplete.json',
     minLength: 0,
