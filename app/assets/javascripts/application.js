@@ -31,28 +31,31 @@ function add_fields(link, association, content) {
 var ready = function() {
     $(".menu ul").superfish(); 
 };
-  
-function log( essage) {
-      $( "<div/>" ).text( message ).prependTo( "#log" );
-      $( "#log" ).attr( "scrollTop", 0 );
-    }
+
+function log( message) {
+    $( "<div/>" ).text( message ).prependTo( "#log" );
+    $( "#log" ).attr( "scrollTop", 0 );
+}
+    
 
 $(function() {
     $( "input[type=submit], #button" )
       .button();      
     $( ".message" )
       .button({icons: { primary: "ui-icon-mail-closed" }});       
+    
     $(".society_auto_complete").autocomplete({
-    source: '/societies/autocomplete.json',
-    minLength: 0,
-    select: function( event, ui ) {
+      source: '/societies/autocomplete.json',
+      minLength: 0,
+      select: function( event, ui ) {
     	log( "society:" + ui.item.value );
       }
   	});
+  	$( "#log" ).draggable({ revert: true });
+  	
   	$( ".pulsate" ).effect( "pulsate", null, 3000, null ); 	
     
     $( document ).tooltip();
-    $( "#log" ).draggable({ revert: true });
   });
 
 

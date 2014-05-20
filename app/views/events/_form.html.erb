@@ -51,8 +51,8 @@
     </div>
   </div>
    <div class="group" title="If you add societies to a new group, please give the new group a name.">
-  	<%= f.label :new_group_name%>
-  	<%= f.fields_for :group do |g| %>
+  	<%= f.label :name, "New group name"%>
+  	<%= f.fields_for :groups do |g| %>
   	  <%= g.text_field :name %>
   	<% end -%>
   </div>
@@ -66,10 +66,6 @@
   <% end -%>
   </div>
   <br><br>
-  
-  <div>
-  	<input type="text" class="society_auto_complete", params[:term]>
-  </div>
   
   <div class="actions">
     <%= f.submit %>

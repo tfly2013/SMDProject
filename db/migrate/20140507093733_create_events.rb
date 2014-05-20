@@ -1,8 +1,7 @@
 class CreateEvents < ActiveRecord::Migration
   def change
     create_table :events do |t|
-      t.belongs_to :societies
-      t.belongs_to :groups
+      t.belongs_to :society
       t.string :name
       t.string :type
       t.datetime :begin_time
