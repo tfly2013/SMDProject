@@ -47,3 +47,6 @@
 		<% end %>
 	</tbody>
 </table>
+<% if admin?(@society) %>
+	<%= link_to "Create Event", new_event_path(@society), id: "button" %>
+<% end %>

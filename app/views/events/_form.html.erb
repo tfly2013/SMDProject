@@ -40,24 +40,25 @@
     <%= f.text_area :description %>
   </div>
   
-  <div class="group" title="You can create a group and add societies to it where to share event with.">
-  	<%= f.label :add_society%>
-  	<%= f.text_field :societylist, class:"society_auto_complete"%>
-  </div>
-
-   <div class="group" title="If you add societies to a new group, please give the new group a name.">
-   	<%= fields_for :groups do |g| %>
-	  	<%= g.label :name, "New group name"%>
-	  	<%= g.text_field :name %>  	  
-  	<% end -%>
+  <div class="group">
+  	  <h3>Share Event With Group:</h3>
+	  <%= f.fields_for :groups do |g| %>  
+	  	<div class="field">
+			<%= g.label :name, "Group name"%><br>
+			<%= g.text_field :name %>
+		 </div>
+		 <div class="field">
+		  	<%= g.label :societylist, "Add societies"%><br>
+			<%= g.text_field :societylist, class:"society_auto_complete"%>
+		</div>
+	  <% end -%> 
   </div>
   
   <div class="picture">
-  <%= f.label :picture, "Upload Pictures" %><br>
-
-  <%= f.fields_for :pictures do |p| %>  	
-  	<%= p.file_field :picture %> 
-  <% end -%>
+	  <h3>Upload Pictures:</h3><br>
+	  <%= f.fields_for :pictures do |p| %>  	
+	  	<%= p.file_field :picture %> 
+	  <% end -%>
   </div> 
   
   <div class="actions">

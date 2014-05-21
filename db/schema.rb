@@ -21,11 +21,6 @@ ActiveRecord::Schema.define(version: 20140520081715) do
     t.datetime "updated_at"
   end
 
-  create_table "event_groups", id: false, force: true do |t|
-    t.integer "group_id"
-    t.integer "event_id"
-  end
-
   create_table "events", force: true do |t|
     t.integer  "society_id"
     t.string   "name"
@@ -41,15 +36,20 @@ ActiveRecord::Schema.define(version: 20140520081715) do
     t.datetime "updated_at"
   end
 
-  create_table "group_societies", id: false, force: true do |t|
+  create_table "events_groups", id: false, force: true do |t|
     t.integer "group_id"
-    t.integer "society_id"
+    t.integer "event_id"
   end
 
   create_table "groups", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "groups_societies", id: false, force: true do |t|
+    t.integer "group_id"
+    t.integer "society_id"
   end
 
   create_table "joins", force: true do |t|

@@ -3,8 +3,6 @@
 <table>
   <thead>
     <tr>
-      <th>Society</th>
-      <th>Group</th>
       <th>Name</th>
       <th>Type</th>
       <th>Start time</th>
@@ -23,8 +21,6 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= event.societies_id %></td>
-        <td><%= event.groups_id %></td>
         <td><%= event.name %></td>
         <td><%= event.type %></td>
         <td><%= event.begin_time %></td>

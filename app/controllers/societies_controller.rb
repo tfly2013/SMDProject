@@ -11,10 +11,12 @@ class SocietiesController < ApplicationController
   end  
     
   def autocomplete
-    societies = Society.all.order(:name).where("name LIKE ?", "#{params[:term]}%")
+    terms = params[:term].split(", ")
+    term = terms.pop
+    societies = Society.all.order(:name).where("name LIKE ?", "#{term}%")
     respond_to do |format|
       format.html
-      format.json { render json: societies.map(&:name) }
+      format.json { render json: societies.map(&:name) - terms }
     end
   end  
   
@@ -35,8 +37,10 @@ class SocietiesController < ApplicationController
       representative = @society.joins.build
       representative.role = "Representative"
       representative.member = current_member
+      representative.admin = true
       president = @society.joins.build
       president.role = "President"
+      president.admin = true
       president.build_member unless president.member
       treasurer = @society.joins.build
       treasurer.role = "Treasurer"

@@ -22,7 +22,7 @@
 	<% @events.try(:each) do |event| %>
 		<h3><%= event.name %></h3>
 		<div>
-			<%= image_tag event.pictures.first.picture.url(:medium), class:"acc_img" %>
+			<%= image_tag event.pictures.first.try(:picture).try(:url, :medium), class:"acc_img" %>
 			<div lass:"acc_text">
 				<%= event.description %>
 			</div>

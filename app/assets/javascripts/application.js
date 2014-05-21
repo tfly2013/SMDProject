@@ -29,13 +29,6 @@ function add_fields(link, association, content) {
   $(link).closest("table").children("tbody").children().last().after(content.replace(regexp, new_id));
 }
 
-var ready = function() {
-    $(".menu ul").superfish(); 
-    $('.bxslider').bxSlider({
-  	auto: true,
-	});
-};
-
 $(function() {
     $( "input[type=submit], #button" ).button();          
     $( ".message" ).button({icons: { primary: "ui-icon-mail-closed" }});  
@@ -44,9 +37,31 @@ $(function() {
     	heightStyle: "content"
     });
     
+    
+	function split( val ) {
+	  return val.split( /,\s*/ );
+	}	
+	function extractLast( term ) {
+	  return split( term ).pop();
+	}    
     $(".society_auto_complete").autocomplete({
+    minLength: 0,
     source: '/societies/autocomplete.json',
-    minLength: 0
+        focus: function() {
+          // prevent value inserted on focus
+          return false;
+        },
+        select: function( event, ui ) {
+          var terms = split( this.value );
+          // remove the current input
+          terms.pop();
+          // add the selected item
+          terms.push( ui.item.value );
+          // add placeholder to get the comma-and-space at the end
+          terms.push( "" );
+          this.value = terms.join( ", " );
+          return false;
+        }
   	});
   	
   	$( ".pulsate" ).effect( "pulsate", null, 3000, null ); 	
@@ -54,6 +69,12 @@ $(function() {
     $( document ).tooltip();
   }); 
 
+var ready = function() {
+    $(".menu ul").superfish(); 
+    $('.bxslider').bxSlider({
+  	auto: true,
+	});
+};
 
 $(document).ready(ready);
 $(document).on('page:load', ready);
