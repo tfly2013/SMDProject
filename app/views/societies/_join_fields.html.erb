@@ -2,7 +2,8 @@
 	<%= f.fields_for :member do |g| %>
 		 <td><%= g.text_field :name %></td>
 		 <td><%= g.email_field :email %></td>
-		 <td><%= g.text_field :phone %></td> 
+		 <td><%= g.text_field :phone %>
+		 <%= g.hidden_field :auto_generate, value: "1" %></td> 
 	<% end %>   
 	<% if locked?(f) %>
 		<td><%= f.text_field :role, readonly: true %></td>
