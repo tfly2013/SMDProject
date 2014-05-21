@@ -35,26 +35,19 @@ var ready = function() {
   	auto: true,
 	});
 };
-  
-function log( essage) {
-      $( "<div/>" ).text( message ).prependTo( "#log" );
-      $( "#log" ).attr( "scrollTop", 0 );
-    }
 
 $(function() {
     $( "input[type=submit], #button" ).button();          
     $( ".message" ).button({icons: { primary: "ui-icon-mail-closed" }});  
      
-    $( ".accordion" ).accordion();
+    $( ".accordion" ).accordion({
+    	heightStyle: "content"
+    });
     
     $(".society_auto_complete").autocomplete({
     source: '/societies/autocomplete.json',
-    minLength: 0,
-    select: function( event, ui ) {
-    	log( "society:" + ui.item.value );
-      }
+    minLength: 0
   	});
-  	$( "#log" ).draggable({ revert: true });
   	
   	$( ".pulsate" ).effect( "pulsate", null, 3000, null ); 	
     

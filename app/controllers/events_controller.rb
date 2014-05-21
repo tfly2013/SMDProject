@@ -16,6 +16,7 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     3.times { @event.pictures.build }
+    @event.groups.build
   end
 
   # GET /events/1/edit
@@ -26,9 +27,8 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
-
     respond_to do |format|
-      if @event.save
+      if @event.saved
         gflash :now,  :notice => 'Event was successfully created.'
         format.html { redirect_to @event }
         format.json { render action: 'show', status: :created, location: @event }
@@ -74,6 +74,6 @@ class EventsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       params.require(:event).permit(:name, :type, :begin_time, :end_time, 
-      :location, :webpage, :description, event_groups_attributes: [:id], pictures_attributes: [:id, :picture])
+      :location, :webpage, :description, :societylist, event_groups_attributes: [:id], pictures_attributes: [:id, :picture])
     end
 end
