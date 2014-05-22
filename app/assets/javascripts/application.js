@@ -18,6 +18,8 @@
 //= require jquery.ui.all
 //= require jquery.turbolinks
 //= require gritter
+//= require jquery-ui-timepicker-addon
+//= require jquery.timepicker.js
 function remove_fields(link) {
   $(link).prev("input[type=hidden]").val("1");
   $(link).closest("tr").hide();
@@ -36,7 +38,6 @@ $(function() {
     $( ".accordion" ).accordion({
     	heightStyle: "content"
     });
-    
     
 	function split( val ) {
 	  return val.split( /,\s*/ );
@@ -66,13 +67,14 @@ $(function() {
   	
   	$( ".pulsate" ).effect( "pulsate", null, 3000, null ); 	
     
-    $( document ).tooltip();
+    $( document )
+    .tooltip();
   }); 
 
 var ready = function() {
     $(".menu ul").superfish(); 
     $('.bxslider').bxSlider({
-  	auto: true,
+  		autoControls: false,
 	});
 };
 

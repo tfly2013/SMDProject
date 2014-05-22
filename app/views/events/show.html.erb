@@ -1,7 +1,12 @@
-<p>
-  <strong>Name:</strong>
+<h1>
   <%= @event.name %>
-</p>
+</h1>
+
+<ul class="bxslider">
+  <li><%= image_tag @event.pictures.first.try(:picture).try(:url, :medium), class: "event_pictures" %></li>	
+  <li><%= image_tag @event.pictures.second.try(:picture).try(:url, :medium), class: "event_pictures" %></li>	
+  <li><%= image_tag @event.pictures.third.try(:picture).try(:url, :medium), class: "event_pictures" %></li>
+</ul>
 
 <p>
   <strong>Type:</strong>
@@ -10,12 +15,14 @@
 
 <p>
   <strong>Begin time:</strong>
-  <%= @event.begin_time %>
+  <%= @event.date_begin %>
+  <%= @event.time_begin %>
 </p>
 
 <p>
   <strong>End time:</strong>
-  <%= @event.end_time %>
+  <%= @event.date_end %>
+  <%= @event.time_end %>
 </p>
 
 
@@ -26,12 +33,7 @@
 
 <p>
   <strong>Webpage:</strong>
-  <%= @event.webpage %>
-</p>
-
-<p>
-  <strong>Condition:</strong>
-  <%= @event.condition %>
+  <%= link_to @event.webpage, @event.webpage %>
 </p>
 
 <p>
@@ -44,9 +46,5 @@
   <%= @event.status %>
 </p>
 
-<%= image_tag @event.pictures.first.try(:picture).try(:url, :medium), class: "event_pictures" %>	
-<%= image_tag @event.pictures.second.try(:picture).try(:url, :medium), class: "event_pictures" %>	
-<%= image_tag @event.pictures.third.try(:picture).try(:url, :medium), class: "event_pictures" %>	
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<%= link_to 'Edit', edit_event_path(@event), id:"button" %>
+<%= link_to 'Back', events_path, id:"button"%>

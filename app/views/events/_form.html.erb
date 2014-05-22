@@ -17,16 +17,18 @@
   </div>
   <div class="field">
     <%= f.label :type %><br>
-    <%= f.text_field :type %>
+    <%= f.select :type, options_for_select([["Expo"], ["Conferences"], ["Seminars"], ["Meeting"], ["Trade Show"], ["Business Dinners"], ["Networking"], ["Ceremony"], ["Theme Party"], ["Trade Fairs"]]) %>
   </div>
-  <div class="field">
-    <%= f.label :begin_time %><br>
-    <%= f.datetime_select :begin_time %>
+  <div id="time_duration">
+	  <div class="field"">
+	    <%= f.label :time_duration %><br>
+	    <input type="date" id="event_date_begin" name="event[date_begin]" class="date">
+	    <input type="time" id="event_time_begin" name="event[time_begin]" class="time"> to 
+	    <input type="date" id="event_date_end" name="event[date_end]" class="date">
+	    <input type="time" id="event_time_end" name="event[time_end]" class="time">
+	  </div>
   </div>
-  <div class="field">
-    <%= f.label :end_time %><br>
-    <%= f.datetime_select :end_time %>
-  </div>
+  
   <div class="field">
     <%= f.label :location %><br>
     <%= f.text_field :location %>

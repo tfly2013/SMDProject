@@ -14,6 +14,8 @@
  *= require jquery.ui.all
  *= require gritter
  *= require jquery-ui/redmond
+ *= require jquery-ui-timepicker-addon
+ *= require jquery.timepicker.css
  */
 .logo{
 	float: left;

@@ -4,8 +4,10 @@ class CreateEvents < ActiveRecord::Migration
       t.belongs_to :society
       t.string :name
       t.string :type
-      t.datetime :begin_time
-      t.datetime :end_time
+      t.date :date_begin
+      t.date :date_end
+      t.time :time_begin
+      t.time :time_end
       t.string :location
       t.string :webpage
       t.string :condition
