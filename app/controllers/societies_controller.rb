@@ -1,6 +1,6 @@
 class SocietiesController < ApplicationController
   before_action :set_society, only: [:join, :show, :edit, :update, :destroy]
-  before_action :require_login, only: [:join, :edit, :update, :destroy]
+  before_action :require_login, only: [:new, :create, :join, :edit, :update, :destroy]
   
   # GET /societies/1/join
   def join
@@ -60,12 +60,10 @@ class SocietiesController < ApplicationController
   # POST /societies.json
   def create
     @society = Society.new(society_params)
-    puts society_params
     respond_to do |format|
       if @society.save
         gflash :now, :notice => "Society was successfully created."
         session[:society_id] = @society.id
-        #Join.create(member_id: current_member.id, society_id: @society.id, role:"Representative", admin: true)
         format.html { redirect_to @society }
         format.json { render action: 'show', status: :created, location: @society }
       else
@@ -110,27 +108,5 @@ class SocietiesController < ApplicationController
     def society_params
       params.require(:society).permit(:name, :register_num, :website, :description, :logo, 
       joins_attributes: [:id, :role, :admin, :_destroy, member_attributes: [:id, :name, :email, :phone, :auto_generate]])
-    end
-    
-    def joins_attributes
-        params_joins = Hash.new
-        params[:society][:joins_attributes].each do |key,value|
-          params_member = value[:member_attributes]
-          if !params_member.nil?
-            member = Member.find_by_email(params_member[:email])
-            if member.nil?
-              password = (0...8).map { (65 + rand(26)).chr }.join                  
-              params_member = params_member.merge(:password => "#{password}",
-                             :password_confirmation => "#{password}")
-              value[:member_attributes] = params_member
-            else
-              value.delete(:member_attributes)
-              value = value.merge(member_id: member.id)
-              puts value
-            end
-          end
-          params_joins[key] = value
-        end
-        return params_joins
     end
 end
