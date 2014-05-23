@@ -4,7 +4,8 @@
 		<thead>
 		    <tr>	  
 		      <th>Name</th>	    
-		      <th>Website</th>	      
+		      <th>Website</th>
+		      <th>Host</th>	      
 		    </tr>
 		</thead>
 		<tbody>
@@ -12,6 +13,7 @@
 			<tr>
 				<td><%= link_to event.name, event %></td>
 				<td><%= link_to event.website, event.website %></td>
+				<td><%= link_to Society.where(id: event.society_id).take(1).first.name, Society.where(id: event.society_id).take(1).first %></td>
 			</tr>
   	        <% end %>
 		</tbody>

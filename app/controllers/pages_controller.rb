@@ -19,7 +19,7 @@ class PagesController < ApplicationController
         elsif params[:search_method] == "Search by event"
           @search = Event.find_all_by_name(params[:search_input]).first(10)
         elsif params[:search_method] == "Search event by society"
-          @search = Event.joins(:society).where("societies.name" => params[:search_input])
+          @search = Event.joins(:society).where("societies.name" => params[:search_input]).first(10)
         elsif params[:search_method] == "Search by event type"
           @search = Event.find_all_by_type(params[:search_input]).first(10)
         end
