@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   end
   
   def event
-    
+    @events = Event.all.sort_by{|e| e.reservations.count }
   end
   
   def search_autocomplete
