@@ -9,7 +9,7 @@ class CreateEvents < ActiveRecord::Migration
       t.time :time_begin
       t.time :time_end
       t.string :location
-      t.string :webpage
+      t.string :website
       t.string :condition
       t.text :description
       t.string :status

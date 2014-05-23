@@ -25,7 +25,8 @@ SMDProject::Application.routes.draw do
     collection do
       get 'autocomplete'
     end
-  end  
+  end
+  match "/search", to: "pages#search", via: [:get, :post], as: :search  
   match "/events", to: "pages#event", via: [:get, :post], as: :eventslist
   match "/registration", to: "members#new", via: [:get, :post]
   match "/login", to: "sessions#new", via: [:get, :post]

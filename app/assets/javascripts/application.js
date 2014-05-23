@@ -32,7 +32,7 @@ function add_fields(link, association, content) {
 }
 
 $(function() {
-    $( "input[type=submit], #button" ).button();          
+    $( "input[type=submit], #button, input[type=file]" ).button();          
     $( ".message" ).button({icons: { primary: "ui-icon-mail-closed" }});  
      
     $( ".accordion" ).accordion({
@@ -67,8 +67,7 @@ $(function() {
   	
   	$( ".pulsate" ).effect( "pulsate", null, 3000, null ); 	
     
-    $( document )
-    .tooltip();
+    $( document ).tooltip();
   }); 
 
 var ready = function() {
