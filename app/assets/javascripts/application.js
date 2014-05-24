@@ -68,6 +68,12 @@ $(function() {
   	$( ".pulsate" ).effect( "pulsate", null, 3000, null ); 	
     
     $( document ).tooltip();
+    
+    
+	$("#search_input").autocomplete({
+	    minLength: 0,
+	    source: '/pages/search_autocomplete.json',
+	});
   }); 
 
 var ready = function() {

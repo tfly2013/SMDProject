@@ -9,7 +9,13 @@ class PagesController < ApplicationController
   end
   
   def search_autocomplete
-    @search = Event.find_by_name(param[:search_input]).first(10)
+    term = params[:search_input]
+    societies = Society.all.order(:name).where("name LIKE ?", "#{term}%")
+    
+    respond_to do |format|
+      format.html
+      format.json { render json: societies.map(&:name) }
+    end
   end
   
   def search
@@ -27,3 +33,4 @@ class PagesController < ApplicationController
   end
   
 end
+
