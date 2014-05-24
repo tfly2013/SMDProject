@@ -29,8 +29,8 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         gflash :now,  :notice => 'Comment was successfully created.'
-        format.html { redirect_to event_path(params[:event_id]) }
-        format.json { render action: 'show', status: :created, location: event_path(params[:event_id]) }
+        format.html { redirect_to [@society, @event] }
+        format.json { render action: 'show', status: :created, location: [@society, @event] }
       else
         format.html { render action: 'new' }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
