@@ -7,8 +7,8 @@ class SessionsController < ApplicationController
     member = Member.find_by_email(params[:sessions][:email])
     if member && member.authenticate(params[:sessions][:password])
       session[:member_id] = member.id
-      redirect_to member      
-    else
+      redirect_to member
+    else 
       gflash :now, :error => "Invaild email/password combination." 
       @title = "Login"
       render "new"

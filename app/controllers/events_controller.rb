@@ -28,7 +28,7 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
-    puts @event.groups
+    @event.society_id = @society.id
     respond_to do |format|
       if @event.save
         gflash :now,  :notice => 'Event was successfully created.'
@@ -71,6 +71,7 @@ class EventsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_event
       @event = Event.find(params[:id])
+      @society = Society.find(params[:society_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

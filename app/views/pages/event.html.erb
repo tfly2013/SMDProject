@@ -1,0 +1,21 @@
+<div>
+	<h1>All events</h1>
+	<table>
+		<thead>
+		    <tr>	  
+		      <th>Name</th>	    
+		      <th>Website</th>
+		      <th>Host</th>	      
+		    </tr>
+		</thead>
+		<tbody>
+			<% @events.try(:each) do |event|%>
+			<tr>
+				<td><%= link_to event.name, event %></td>
+				<td><%= link_to event.website, event.website %></td>
+				<td><%= link_to Society.where(id: event.society_id).take(1).first.name, Society.where(id: event.society_id).take(1).first %></td>
+			</tr>
+  	        <% end %>
+		</tbody>
+	</table>
+</div>
