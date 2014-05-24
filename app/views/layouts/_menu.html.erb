@@ -12,7 +12,7 @@
 		<% end %>		
 		<% primary.item :societies, 'Societies', societies_path do |sec| %>
 			<% sec.item :my_societies, 'My Societies',if: proc {logged_in?} do |s| %>
-				<% current_member.societies.each do |society| %>
+				<% current_member.societies.uniq.each do |society| %>
 					<% s.item :society, society.name, url_for(society) %>
 				<% end %>
 			<% end %>

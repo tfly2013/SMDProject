@@ -1,22 +1,32 @@
 <p>
   <strong>Member:</strong>
-  <%= @reservation.member %>
+  <%= @reservation.member.email %>
 </p>
 
-<p>
-  <strong>Event:</strong>
-  <%= @reservation.event %>
-</p>
-
+  <p>
+    <strong>Event:</strong>
+    <%= @event.name %>
+  </p>
+  <p>
+    <strong>Society:</strong>
+    <%= @event.society.name %>
+  </p>
+  <p>
+    <strong>Location:</strong>
+    <%= @event.location %>
+  </p>
+  <p>
+    <strong>Avaliable Tickets:</strong>
+    <%= remain_ticket(@event) %>
+  </p>
+  <p>
+    <strong>Price:</strong>
+    <%= @event.ticket.price %>
+  </p>
 <p>
   <strong>Quantity:</strong>
   <%= @reservation.quantity %>
 </p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @reservation.status %>
-</p>
-
-<%= link_to 'Edit', [:edit, @society, @event, @reservation] %> |
-<%= link_to 'Back', [@society, @event, :reservations] %>
+<%= link_to 'Edit', [:edit, @society, @event, @reservation], id: "button" %> <br />
+<%= link_to 'Back', [@society, @event] %>

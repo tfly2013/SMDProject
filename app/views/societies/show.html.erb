@@ -65,7 +65,7 @@
 		<tbody>
 			<% @society.events.each do |event| %>
 			<tr>
-				<td><%= link_to event.name, event %></td>
+				<td><%= link_to event.name, [@society, event] %></td>
 				<td><%= event.type %></td>
 				<td><%= event.date_begin %> <%= event.time_begin %></td>
 				<td><%= event.location %></td>

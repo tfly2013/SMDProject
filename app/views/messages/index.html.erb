@@ -1,4 +1,3 @@
-<h1>Listing messages</h1>
 <h2>Received messages</h2>
 <table>
   <thead>
@@ -19,8 +18,8 @@
       	<% end %>
 	    		<td><%= message.sender.name %></td>
         		<td><%= message.content %></td>
-        		<td><%= link_to 'Show', message %></td>
-        		<td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        		<td><%= link_to 'Show', [message.receiver, message] %></td>
+        		<td><%= link_to 'Destroy', [message.receiver, message], method: :delete, data: { confirm: 'Are you sure?' } %></td>
         	</tr>        
     <% end %>
   </tbody>
@@ -42,8 +41,8 @@
       <tr>
       	<td><%= message.receiver.name %></td>
         <td><%= message.content %></td>
-        <td><%= link_to 'Show', message %></td>
-        <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', [message.receiver, message] %></td>
+        <td><%= link_to 'Destroy', [message.receiver, message], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

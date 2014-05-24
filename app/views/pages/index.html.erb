@@ -9,10 +9,11 @@
 	<% @societies.try(:each) do |society| %>
 		<h3><%= society.name %></h3>
 		<div>
-			<%= image_tag society.logo.url(:small), class:"acc_img" %>
+			<%= image_tag society.try(:logo).try(:url, :small), class:"acc_img" %>
 			<div lass:"acc_text">
 				<%= society.description %>
 			</div>
+			<%= link_to "View", society %>
 		</div>
 	<% end %>	
 </div>
@@ -26,6 +27,7 @@
 			<div lass:"acc_text">
 				<%= event.description %>
 			</div>
+			<%= link_to "View", [event.society, event] %>
 		</div>
 	<% end %>	
 </div>

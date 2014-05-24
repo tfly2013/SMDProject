@@ -18,6 +18,7 @@ class MessagesController < ApplicationController
 
   # GET /messages/new
   def new
+    @member = Member.find(params[:member_id])
     @message = Message.new
   end
 
@@ -31,8 +32,8 @@ class MessagesController < ApplicationController
     respond_to do |format|
       if @message.save
         gflash :now, :success => 'Message was successfully sended.'
-        format.html { redirect_to @message }
-        format.json { render action: 'show', status: :created, location: @message }
+        format.html { redirect_to [@message.sender, @message] }
+        format.json { render action: 'show', status: :created, location: [@message.sender, @message] }
       else
         format.html { render action: 'new' }
         format.json { render json: @message.errors, status: :unprocessable_entity }
@@ -45,7 +46,7 @@ class MessagesController < ApplicationController
   def destroy
     @message.destroy
     respond_to do |format|
-      format.html { redirect_to messages_url }
+      format.html { redirect_to [@member, :messages] }
       format.json { head :no_content }
     end
   end

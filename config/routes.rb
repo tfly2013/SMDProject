@@ -15,7 +15,7 @@ SMDProject::Application.routes.draw do
   resources :societies do
     resources :events, only: [:new, :create, :show, :edit, :update, :destroy] do
       resources :reservations, only: [:new, :create, :show, :edit, :update, :destroy]
-      resources :comments, only: :new
+      resources :comments, only: [:new, :create]
     end
     get 'join', on: :member
     get 'autocomplete', on: :collection

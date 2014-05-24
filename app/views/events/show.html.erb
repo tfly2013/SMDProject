@@ -2,11 +2,16 @@
   <%= @event.name %>
 </h1>
 
-<ul class="bxslider">
-  <li><%= image_tag @event.pictures.first.try(:picture).try(:url, :medium), class: "event_pictures" %></li>	
-  <li><%= image_tag @event.pictures.second.try(:picture).try(:url, :medium), class: "event_pictures" %></li>	
-  <li><%= image_tag @event.pictures.third.try(:picture).try(:url, :medium), class: "event_pictures" %></li>
-</ul>
+<%= link_to 'Edit', [:edit, @society, @event], id: "button" %>
+<%= link_to 'Reserve', new_society_event_reservation_path(@society, @event), id: "button" %>
+
+<% if @event.pictures.count > 0 %>
+	<ul class="bxslider">
+	  <li><%= image_tag @event.pictures.first.try(:picture).try(:url, :medium), class: "event_pictures" %></li>	
+	  <li><%= image_tag @event.pictures.second.try(:picture).try(:url, :medium), class: "event_pictures" %></li>	
+	  <li><%= image_tag @event.pictures.third.try(:picture).try(:url, :medium), class: "event_pictures" %></li>
+	</ul>
+<% end %>
 
 <p>
   <strong>Type:</strong>
@@ -47,35 +52,29 @@
 
 <p>
   <strong>Remaining Tickets:</strong>
-  <%= @event.ticket.total %>
+  <%= remain_ticket(@event) %>
 </p>
 
 <p>
   <strong>Tickets Price:</strong>
-  <%= @event.ticket.price %>
+  <%= @event.ticket.try(:price) %>
 </p>
 
-<%= image_tag @event.pictures.first.try(:picture).try(:url, :medium), class: "event_pictures" %>	
-<%= image_tag @event.pictures.second.try(:picture).try(:url, :medium), class: "event_pictures" %>	
-<%= image_tag @event.pictures.third.try(:picture).try(:url, :medium), class: "event_pictures" %>	
-
-
-<%= link_to 'New Comment', new_society_event_comment_path(@society, @event) %>
+<%= link_to 'New Comment', new_society_event_comment_path(@society, @event), id: "button" %>
 <table>
   <thead>
     <tr>
+    	<th>Poster</th>
       <th>Comments</th>
     </tr>
   </thead>
-
   <tbody>
-    <% @events.comments.each do |comment| %>
+    <% @event.comments.each do |comment| %>
       <tr>
+      	<td><%= comment.member.name %></td>
         <td><%= comment.content %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to 'Edit', [:edit, @society, @event] %> |
-<%= link_to 'Back', [@society, :events] %>

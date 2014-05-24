@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
   before_action :set_reservation, only: [:show, :edit, :update, :destroy]
-
+  before_action :require_login
   # GET /reservations/1
   # GET /reservations/1.json
   def show
@@ -8,6 +8,8 @@ class ReservationsController < ApplicationController
 
   # GET /reservations/new
   def new
+    @society = Society.find(params[:society_id])
+    @event = Event.find(params[:event_id])
     @reservation = Reservation.new
   end
 
@@ -19,12 +21,13 @@ class ReservationsController < ApplicationController
   # POST /reservations.json
   def create
     @reservation = Reservation.new(reservation_params)
-
+    @reservation.event_id = params[:event_id]
+    @reservation.member_id = current_member.id
     respond_to do |format|
       if @reservation.save
         gflash :now, :success => 'Reservation was successfully created.'
-        format.html { redirect_to @reservation }
-        format.json { render action: 'show', status: :created, location: @reservation }
+        format.html { redirect_to [@reservation.event.society, @reservation.event, @reservation] }
+        format.json { render action: 'show', status: :created, location: [@reservation.event.society, @reservation.event, @reservation] }
       else
         format.html { render action: 'new' }
         format.json { render json: @reservation.errors, status: :unprocessable_entity }
@@ -38,7 +41,7 @@ class ReservationsController < ApplicationController
     respond_to do |format|
       if @reservation.update(reservation_params)
         gflash :now, :success => 'Reservation was successfully updated.'
-        format.html { redirect_to @reservation }
+        format.html { redirect_to [@reservation.event.society, @reservation.event, @reservation] }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
