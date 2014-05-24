@@ -3,7 +3,7 @@
 		<% primary.item :home, 'Home', root_path do |sec| %>
 			<%if logged_in? %>
 				<% sec.item :profile, 'Profile', url_for(current_member) %>
-				<% sec.item :profile, 'Message', messages_path(current_member) %>	
+				<% sec.item :profile, 'Message', [current_member, :messages] %>	
 				<% sec.item :profile, 'Log Out', logout_path %>
 			<% else %>
 				<% sec.item :profile, 'Login', login_path %>
