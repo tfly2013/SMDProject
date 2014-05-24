@@ -5,27 +5,22 @@ SMDProject::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]  
 
   resources :members do
-    member do
-      resources :messages
+    resources :messages
+    member do      
       get 'change_password'
       patch 'update_password'
     end
   end
 
   resources :societies do
-    member do
-      resources :events do
-        member do
-            resources :reservations
-            resources :comments
-        end
-      end      
-      get 'join'
+    resources :events do
+      resources :reservations
+      resources :comments
     end
-    collection do
-      get 'autocomplete'
-    end
+    get 'join', on: :member
+    get 'autocomplete', on: :collection
   end
+  
   match "/search", to: "pages#search", via: [:get, :post], as: :search  
   match "/events", to: "pages#event", via: [:get, :post], as: :eventslist
   match "/registration", to: "members#new", via: [:get, :post]

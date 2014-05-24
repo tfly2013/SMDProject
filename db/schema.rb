@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 20140520081715) do
     t.string   "website"
     t.string   "condition"
     t.text     "description"
-    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

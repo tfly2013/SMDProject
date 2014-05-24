@@ -12,7 +12,7 @@ class Event < ActiveRecord::Base
   accepts_nested_attributes_for :groups
   
   has_attached_file :picture, styles: { large: "500x500>", medium: "300x300>", small: "130x130>" }, :default_url => "/images/missing.png" 
-  
+    
   validates :name, length: { maximum: 30 }, presence: true, uniqueness: { case_sensitive: false }
   validates :type, length: { maximum: 15 }, presence: true
   validates :date_begin, presence: true
@@ -21,4 +21,5 @@ class Event < ActiveRecord::Base
   validates :time_end, presence: true
   validates :location, presence: true
   validates :description, length: { maximum: 1000 }
+
 end
