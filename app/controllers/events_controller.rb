@@ -22,9 +22,10 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
+    @event.society_id = params[:society_id]
     respond_to do |format|
       if @event.save
-        gflash :now,  :notice => 'Event was successfully created.'
+        gflash :now,  :success => 'Event was successfully created.'
         format.html { redirect_to [@society, @event] }
         format.json { render action: 'show', status: :created, location: [@society, @event] }
       else
@@ -40,7 +41,7 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        gflash :now,  :notice => 'Event was successfully updated.'
+        gflash :now,  :success => 'Event was successfully updated.'
         format.html { redirect_to @event }
         format.json { head :no_content }
       else
@@ -70,7 +71,7 @@ class EventsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       params.require(:event).permit(:society_id, :name, :type, :begin_time, :end_time, 
-      :location, :webpage, :description, groups_attributes: [:id,:name,:societylist], 
+      :location, :website, :description, groups_attributes: [:id,:name,:societylist], 
       pictures_attributes: [:id, :picture], tickets_attributes: [:id, :total, :price])
     end
 end

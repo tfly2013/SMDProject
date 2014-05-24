@@ -30,7 +30,7 @@ class MessagesController < ApplicationController
     @message.read = false
     respond_to do |format|
       if @message.save
-        gflash :now, :notice => 'Message was successfully sended.'
+        gflash :now, :success => 'Message was successfully sended.'
         format.html { redirect_to @message }
         format.json { render action: 'show', status: :created, location: @message }
       else

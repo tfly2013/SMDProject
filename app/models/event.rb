@@ -23,4 +23,5 @@ class Event < ActiveRecord::Base
   # validates :location, presence: true
   validates :description, length: { maximum: 1000 }
   
+  
 end
