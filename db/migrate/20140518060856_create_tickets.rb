@@ -4,8 +4,6 @@ class CreateTickets < ActiveRecord::Migration
       t.belongs_to :event
       t.integer :total
       t.decimal :price
-      t.datetime :time
-      t.string :location
 
       t.timestamps
     end

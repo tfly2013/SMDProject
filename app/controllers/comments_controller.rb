@@ -1,36 +1,25 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
-
-  # GET /comments
-  # GET /comments.json
-  def index
-    @comments = Comment.all
-  end
-
-  # GET /comments/1
-  # GET /comments/1.json
-  def show
-  end
-
+  before_action :require_login
   # GET /comments/new
   def new
+    @society = Society.find(params[:society_id])
+    @event = Event.find(params[:event_id])
     @comment = Comment.new
-  end
-
-  # GET /comments/1/edit
-  def edit
   end
 
   # POST /comments
   # POST /comments.json
   def create
+    @society = Society.find(params[:society_id])
+    @event = Event.find(params[:event_id])
     @comment = Comment.new(comment_params)
-
+    @comment.member_id = current_member.id
+    @comment.event_id = @event.id    
     respond_to do |format|
       if @comment.save
-        gflash :now,  :notice => 'Comment was successfully created.'
-        format.html { redirect_to @comment }
-        format.json { render action: 'show', status: :created, location: @comment }
+        gflash :now,  :success => 'Comment was successfully created.'
+        format.html { redirect_to [@society, @event] }
+        format.json { render action: 'show', status: :created, location: [@society, @event] }
       else
         format.html { render action: 'new' }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
@@ -38,39 +27,9 @@ class CommentsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /comments/1
-  # PATCH/PUT /comments/1.json
-  def update
-    respond_to do |format|
-      if @comment.update(comment_params)
-        gflash :now,  :notice => 'Comment was successfully updated.'
-        format.html { redirect_to @comment }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /comments/1
-  # DELETE /comments/1.json
-  def destroy
-    @comment.destroy
-    respond_to do |format|
-      format.html { redirect_to comments_url }
-      format.json { head :no_content }
-    end
-  end
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_comment
-      @comment = Comment.find(params[:id])
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:member_id, :event_id, :content)
+      params.require(:comment).permit(:content)
     end
 end

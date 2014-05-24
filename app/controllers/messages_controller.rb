@@ -18,6 +18,7 @@ class MessagesController < ApplicationController
 
   # GET /messages/new
   def new
+    @member = Member.find(params[:member_id])
     @message = Message.new
   end
 
@@ -30,9 +31,9 @@ class MessagesController < ApplicationController
     @message.read = false
     respond_to do |format|
       if @message.save
-        gflash :now, :notice => 'Message was successfully sended.'
-        format.html { redirect_to @message }
-        format.json { render action: 'show', status: :created, location: @message }
+        gflash :now, :success => 'Message was successfully sended.'
+        format.html { redirect_to [@message.sender, @message] }
+        format.json { render action: 'show', status: :created, location: [@message.sender, @message] }
       else
         format.html { render action: 'new' }
         format.json { render json: @message.errors, status: :unprocessable_entity }
@@ -45,7 +46,7 @@ class MessagesController < ApplicationController
   def destroy
     @message.destroy
     respond_to do |format|
-      format.html { redirect_to messages_url }
+      format.html { redirect_to [@member, :messages] }
       format.json { head :no_content }
     end
   end
@@ -54,6 +55,7 @@ class MessagesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_message
       @message = Message.find(params[:id])
+      @member = Member.find(params[:member_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

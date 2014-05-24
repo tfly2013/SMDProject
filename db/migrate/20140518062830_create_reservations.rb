@@ -4,7 +4,6 @@ class CreateReservations < ActiveRecord::Migration
       t.belongs_to :member
       t.belongs_to :event
       t.integer :quantity
-      t.string :status
 
       t.timestamps
     end

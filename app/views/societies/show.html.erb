@@ -26,27 +26,51 @@
 	</div>
 </div>
 
-<h2>Office Bearer</h2>
-<table>
-	<thead>
-	    <tr>	  
-	      <th>Role</th>	    
-	      <th>Name</th>
-	      <th>Email</th>
-	      <th>Phone</th>	      
-	    </tr>
-	</thead>
-	<tbody>
-		<% @society.members.each do |member| %>
-		<tr>
-			<td><%= Join.find_by_member_id_and_society_id(member.id,@society.id).role %></td>
-			<td><%= member.name %></td>
-			<td><%= member.email %></td>
-			<td><%= member.phone %></td>
-		</tr>		
-		<% end %>
-	</tbody>
-</table>
-<% if admin?(@society) %>
-	<%= link_to "Create Event", new_event_path(@society), id: "button" %>
-<% end %>
+<div class="bearer">
+	<h2>Office Bearer</h2>
+	<table>
+		<thead>
+		    <tr>	  
+		      <th>Role</th>	    
+		      <th>Name</th>
+		      <th>Email</th>
+		      <th>Phone</th>	      
+		    </tr>
+		</thead>
+		<tbody>
+			<% @society.members.each do |member| %>
+			<tr>
+				<td><%= Join.find_by_member_id_and_society_id(member.id,@society.id).role %></td>
+				<td><%= member.name %></td>
+				<td><%= member.email %></td>
+				<td><%= member.phone %></td>
+			</tr>		
+			<% end %>
+		</tbody>
+	</table>
+</div>
+<div class="event">
+	<% if admin?(@society) %>
+		<%= link_to "Create Event", new_society_event_path(@society), id: "button" %>
+	<% end %>
+	<table>
+		<thead>
+		    <tr>	  
+		      <th>Name</th>	    
+		      <th>Type</th>
+		      <th>Beign Time</th>
+		      <th>Location</th>
+		    </tr>
+		</thead>
+		<tbody>
+			<% @society.events.each do |event| %>
+			<tr>
+				<td><%= link_to event.name, [@society, event] %></td>
+				<td><%= event.type %></td>
+				<td><%= event.date_begin %> <%= event.time_begin %></td>
+				<td><%= event.location %></td>
+			</tr>		
+			<% end %>
+		</tbody>
+	</table>
+</div>

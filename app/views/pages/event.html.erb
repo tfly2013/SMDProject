@@ -4,16 +4,18 @@
 		<thead>
 		    <tr>	  
 		      <th>Name</th>	    
-		      <th>Website</th>
-		      <th>Host</th>	      
+		      <th>Type</th>
+		      <th>Host</th>
+		      <th>Website</th>     
 		    </tr>
 		</thead>
 		<tbody>
 			<% @events.try(:each) do |event|%>
 			<tr>
-				<td><%= link_to event.name, event %></td>
+				<td><%= link_to event.name, [event.society, event] %></td>
+				<td><%= event.type %></td>
+				<td><%= link_to event.society.name, event.society %></td>
 				<td><%= link_to event.website, event.website %></td>
-				<td><%= link_to Society.where(id: event.society_id).take(1).first.name, Society.where(id: event.society_id).take(1).first %></td>
 			</tr>
   	        <% end %>
 		</tbody>

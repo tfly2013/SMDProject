@@ -2,11 +2,16 @@
   <%= @event.name %>
 </h1>
 
-<ul class="bxslider">
-  <li><%= image_tag @event.pictures.first.try(:picture).try(:url, :medium), class: "event_pictures" %></li>	
-  <li><%= image_tag @event.pictures.second.try(:picture).try(:url, :medium), class: "event_pictures" %></li>	
-  <li><%= image_tag @event.pictures.third.try(:picture).try(:url, :medium), class: "event_pictures" %></li>
-</ul>
+<%= link_to 'Edit', [:edit, @society, @event], id: "button" %>
+<%= link_to 'Reserve', new_society_event_reservation_path(@society, @event), id: "button" %>
+
+<% if @event.pictures.count > 0 %>
+	<ul class="bxslider">
+	  <li><%= image_tag @event.pictures.first.try(:picture).try(:url, :medium), class: "event_pictures" %></li>	
+	  <li><%= image_tag @event.pictures.second.try(:picture).try(:url, :medium), class: "event_pictures" %></li>	
+	  <li><%= image_tag @event.pictures.third.try(:picture).try(:url, :medium), class: "event_pictures" %></li>
+	</ul>
+<% end %>
 
 <p>
   <strong>Type:</strong>
@@ -25,15 +30,19 @@
   <%= @event.time_end %>
 </p>
 
-
 <p>
   <strong>Location:</strong>
   <%= @event.location %>
 </p>
 
 <p>
-  <strong>Webpage:</strong>
-  <%= link_to @event.website, @event.website %>
+  <strong>Website:</strong>
+  <%= @event.website %>
+</p>
+
+<p>
+  <strong>Condition:</strong>
+  <%= @event.condition %>
 </p>
 
 <p>
@@ -42,9 +51,30 @@
 </p>
 
 <p>
-  <strong>Status:</strong>
-  <%= @event.status %>
+  <strong>Remaining Tickets:</strong>
+  <%= remain_ticket(@event) %>
 </p>
 
-<%= link_to 'Edit', edit_event_path(@event), id:"button" %>
-<%= link_to 'Back', events_path, id:"button"%>
+<p>
+  <strong>Tickets Price:</strong>
+  <%= @event.ticket.try(:price) %>
+</p>
+
+<%= link_to 'New Comment', new_society_event_comment_path(@society, @event), id: "button" %>
+<table>
+  <thead>
+    <tr>
+    	<th>Poster</th>
+      <th>Comments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @event.comments.each do |comment| %>
+      <tr>
+      	<td><%= comment.member.name %></td>
+        <td><%= comment.content %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
