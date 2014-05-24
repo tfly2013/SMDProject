@@ -16,12 +16,12 @@ class Event < ActiveRecord::Base
     
   validates :name, length: { maximum: 30 }, presence: true, uniqueness: { case_sensitive: false }
   validates :type, length: { maximum: 15 }, presence: true
-  validates :date_begin, presence: true
-  validates :date_end, presence: true
-  validates :time_begin, presence: true
-  validates :time_end, presence: true
+  # validates :date_begin, presence: true
+  # validates :date_end, presence: true
+  # validates :time_begin, presence: true
+  # validates :time_end, presence: true
   validates :location, presence: true
   validates :description, length: { maximum: 1000 }
-  validates :total, presence: true, inclusion: { in: 1..500 }
-  validates :price, presence: true
+  
+  
 end

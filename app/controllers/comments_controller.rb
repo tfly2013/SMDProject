@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        gflash :now,  :notice => 'Comment was successfully created.'
+        gflash :now,  :success => 'Comment was successfully created.'
         format.html { redirect_to [@society, @event] }
         format.json { render action: 'show', status: :created, location: [@society, @event] }
       else

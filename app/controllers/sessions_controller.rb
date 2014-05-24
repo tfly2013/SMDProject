@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
   end
   
   def destroy
-    gflash :now, :notice => "You are logged out."
+    gflash :now, :success => "You are logged out."
     session[:member_id] = nil
     @title = "Login"
     render "new"
