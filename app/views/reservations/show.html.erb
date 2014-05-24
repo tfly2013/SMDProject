@@ -18,5 +18,5 @@
   <%= @reservation.status %>
 </p>
 
-<%= link_to 'Edit', edit_reservation_path(@reservation) %> |
-<%= link_to 'Back', reservations_path %>
+<%= link_to 'Edit', [:edit, @society, @event, @reservation] %> |
+<%= link_to 'Back', [@society, @event, :reservations] %>

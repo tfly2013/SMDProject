@@ -5,7 +5,7 @@ SMDProject::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]  
 
   resources :members do
-    resources :messages
+    resources :messages, [:new, :create, :show, :destroy]
     member do      
       get 'change_password'
       patch 'update_password'
@@ -13,9 +13,9 @@ SMDProject::Application.routes.draw do
   end
 
   resources :societies do
-    resources :events do
-      resources :reservations
-      resources :comments
+    resources :events, only: [:new, :create, :show, :edit, :update, :destroy] do
+      resources :reservations, only: [:new, :create, :show, :edit, :update, :destroy]
+      resources :comments, only: :new
     end
     get 'join', on: :member
     get 'autocomplete', on: :collection
