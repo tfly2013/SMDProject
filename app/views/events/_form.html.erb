@@ -8,7 +8,7 @@
         <li><%= msg %></li>
       <% end %>
       </ul>
-    </div>
+    </div> 
   <% end %>
   
   <div class="field">
@@ -34,8 +34,8 @@
     <%= f.text_field :location %>
   </div>
   <div class="field">
-    <%= f.label :website %><br>
-    <%= f.text_field :website %>
+    <%= f.label :webpage %><br>
+    <%= f.text_field :webpage %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
@@ -62,6 +62,20 @@
 	  	<%= p.file_field :picture %> 
 	  <% end -%>
   </div> 
+  
+  <div class="ticket">
+  	  <h3>Ticket Details:</h3>
+	  <%= f.fields_for :tickets do |t| %>  
+	  	<div class="field">
+			<%= t.label :total, "Quantity"%><br>
+			<%= t.number_field :total %>
+		 </div>
+		 <div class="field">
+		  	<%= t.label :price, "Price"%><br>
+			<%= t.number_field :price %>
+		</div>
+	  <% end -%> 
+  </div>
   
   <div class="actions">
     <%= f.submit %>

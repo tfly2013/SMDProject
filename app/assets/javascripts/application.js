@@ -32,12 +32,13 @@ function add_fields(link, association, content) {
 }
 
 $(function() {
-    $( "input[type=submit], #button, input[type=file]" ).button();          
+    $( "input[type=submit], #button" ).button();          
     $( ".message" ).button({icons: { primary: "ui-icon-mail-closed" }});  
      
     $( ".accordion" ).accordion({
     	heightStyle: "content"
     });
+    
     
 	function split( val ) {
 	  return val.split( /,\s*/ );
@@ -73,7 +74,7 @@ $(function() {
 var ready = function() {
     $(".menu ul").superfish(); 
     $('.bxslider').bxSlider({
-  		autoControls: false,
+  	auto: true,
 	});
 };
 

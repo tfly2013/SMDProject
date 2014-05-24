@@ -3,7 +3,7 @@ class SocietiesController < ApplicationController
   before_action :require_login, only: [:new, :create, :join, :edit, :update, :destroy]
   
   # GET /societies/1/join
-  def join
+  def join 
     Join.create(member_id: current_member.id, 
         society_id: @society.id, role: "Member", admin: false)
     gflash :now, :notice => "You have joined this society successfully!"

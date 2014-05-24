@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p>
   <strong>Sender:</strong>
   <%= @message.sender.name %> [<%= @message.sender.email %>]
@@ -15,3 +16,22 @@
 
 <%= link_to 'Edit', [:edit, @society, @message] %> |
 <%= link_to 'Back', [@society, @message] %>
+=======
+<p>
+  <strong>Sender:</strong>
+  <%= @message.sender.name %> [<%= @message.sender.email %>]
+</p>
+
+<p>
+  <strong>Receiver:</strong>
+  <%= @message.receiver.name %> [<%= @message.receiver.email %>]
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @message.content %>
+</p>
+
+<%= link_to 'Edit', edit_message_path(@message) %> |
+<%= link_to 'Back', messages_path %>
+>>>>>>> refs/remotes/origin/master

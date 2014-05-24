@@ -7,7 +7,7 @@ module ApplicationHelper
   def current_member
     if (!session[:member_id].nil?)
       return Member.find(session[:member_id])
-    end    
+    end     
   end
   
   def unread_message_count

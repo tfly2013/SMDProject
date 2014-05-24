@@ -17,6 +17,7 @@ class EventsController < ApplicationController
     @event = Event.new
     3.times { @event.pictures.build }
     @event.groups.build
+    @event.build_ticket
   end
 
   # GET /events/1/edit
@@ -75,7 +76,8 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:name, :type, :date_begin, :date_end, :time_begin, :time_end, 
-      :location, :website, :description, groups_attributes: [:id,:name,:societylist], pictures_attributes: [:id, :picture])
+      params.require(:event).permit(:name, :type, :begin_time, :end_time, 
+      :location, :webpage, :description, groups_attributes: [:id,:name,:societylist], 
+      pictures_attributes: [:id, :picture], tickets_attributes: [:id, :total, :price])
     end
 end

@@ -25,7 +25,6 @@
   <%= @event.time_end %>
 </p>
 
-
 <p>
   <strong>Location:</strong>
   <%= @event.location %>
@@ -33,7 +32,12 @@
 
 <p>
   <strong>Webpage:</strong>
-  <%= link_to @event.website, @event.website %>
+  <%= @event.webpage %>
+</p>
+
+<p>
+  <strong>Condition:</strong>
+  <%= @event.condition %>
 </p>
 
 <p>
@@ -46,5 +50,37 @@
   <%= @event.status %>
 </p>
 
-<%= link_to 'Edit', edit_event_path(@event), id:"button" %>
-<%= link_to 'Back', events_path, id:"button"%>
+<p>
+  <strong>Remaining Tickets:</strong>
+  <%= @event.ticket.total %>
+</p>
+
+<p>
+  <strong>Tickets Price:</strong>
+  <%= @event.ticket.price %>
+</p>
+
+<%= image_tag @event.pictures.first.try(:picture).try(:url, :medium), class: "event_pictures" %>	
+<%= image_tag @event.pictures.second.try(:picture).try(:url, :medium), class: "event_pictures" %>	
+<%= image_tag @event.pictures.third.try(:picture).try(:url, :medium), class: "event_pictures" %>	
+
+
+<%= link_to 'New Comment', new_comment_path %>
+<table>
+  <thead>
+    <tr>
+      <th>Comments</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @events.comments.each do |comment| %>
+      <tr>
+        <td><%= comment.content %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>
