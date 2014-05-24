@@ -51,7 +51,7 @@
 </div>
 <div class="event">
 	<% if admin?(@society) %>
-		<%= link_to "Create Event", new_event_path(@society), id: "button" %>
+		<%= link_to "Create Event", new_society_event_path(@society), id: "button" %>
 	<% end %>
 	<table>
 		<thead>
