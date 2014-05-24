@@ -61,6 +61,20 @@
 	  <% end -%>
   </div> 
   
+  <div class="ticket">
+  	  <h3>Ticket Details:</h3>
+	  <%= f.fields_for :tickets do |t| %>  
+	  	<div class="field">
+			<%= t.label :total, "Quantity"%><br>
+			<%= t.number_field :total %>
+		 </div>
+		 <div class="field">
+		  	<%= t.label :price, "Price"%><br>
+			<%= t.number_field :price %>
+		</div>
+	  <% end -%> 
+  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>
