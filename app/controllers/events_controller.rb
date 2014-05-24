@@ -25,8 +25,8 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.save
         gflash :now,  :notice => 'Event was successfully created.'
-        format.html { redirect_to @event }
-        format.json { render action: 'show', status: :created, location: @event }
+        format.html { redirect_to [@society, @event] }
+        format.json { render action: 'show', status: :created, location: [@society, @event] }
       else
         3.times { @event.pictures.build }
         format.html { render action: 'new' }
