@@ -18,6 +18,8 @@
 //= require jquery.ui.all
 //= require jquery.turbolinks
 //= require gritter
+//= require jquery-ui-timepicker-addon
+//= require jquery.timepicker.js
 function remove_fields(link) {
   $(link).prev("input[type=hidden]").val("1");
   $(link).closest("tr").hide();

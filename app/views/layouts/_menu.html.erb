@@ -1,3 +1,32 @@
+<<<<<<< HEAD
+<div class="menu">
+	<%= render_navigation expand_all: true do |primary| %>
+		<% primary.item :home, 'Home', root_path do |sec| %>
+			<%if logged_in? %>
+				<% sec.item :profile, 'Profile', url_for(current_member) %>
+				<% sec.item :profile, 'Message', [current_member, :messages] %>	
+				<% sec.item :profile, 'Log Out', logout_path %>
+			<% else %>
+				<% sec.item :profile, 'Login', login_path %>
+				<% sec.item :profile, 'Sign Up', registration_path %>
+			<% end %>
+		<% end %>		
+		<% primary.item :societies, 'Societies', societies_path do |sec| %>
+			<% sec.item :my_societies, 'My Societies',if: proc {logged_in?} do |s| %>
+				<% current_member.societies.each do |society| %>
+					<% s.item :society, society.name, url_for(society) %>
+				<% end %>
+			<% end %>
+			<% sec.item :hot_societies, 'Popular Societies' do |s| %>
+				<% Society.all.sort_by{|society| society.joins.count}.take(10).each do |society| %>
+					<% s.item :society, society.name, url_for(society) %>
+				<% end %>
+			<% end %>
+		<% end %>
+		<% primary.item :events, 'Events', eventslist_path do |sec| %>
+		<% end %>
+	<% end %>
+=======
 <div class="menu">
 	<%= render_navigation expand_all: true do |primary| %>
 		<% primary.item :home, 'Home', root_path do |sec| %>
@@ -25,4 +54,5 @@
 		<% primary.item :events, 'Events', eventslist_path do |sec| %>
 		<% end %>
 	<% end %>
+>>>>>>> refs/remotes/origin/master
 </div>		

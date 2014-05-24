@@ -1,3 +1,60 @@
+<<<<<<< HEAD
+<h1>Listing messages</h1>
+
+<h2>Received messages</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Sender</th>
+      <th>Content</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% current_member.received_message.each do |message| %>
+	    <% if !message.read %>
+	    	<tr class="unread" >
+	    <% else %>
+	    	<tr>
+      	<% end %>
+	    		<td><%= message.sender.name %></td>
+        		<td><%= message.content %></td>
+        		<td><%= link_to 'Show', message %></td>
+        		<td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        	</tr>        
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Sended messages</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Receiver</th>
+      <th>Content</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% current_member.sended_message.each do |message| %>
+      <tr>
+      	<td><%= message.receiver.name %></td>
+        <td><%= message.content %></td>
+        <td><%= link_to 'Show', message %></td>
+        <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Message', [:new, @member], id:"button" %>
+=======
 <h1>Listing messages</h1>
 
 <h2>Received messages</h2>
@@ -53,3 +110,4 @@
 <br>
 
 <%= link_to 'New Message', new_message_path, id:"button" %>
+>>>>>>> refs/remotes/origin/master
