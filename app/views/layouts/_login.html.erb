@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div class="login">
 	<% if logged_in? %>
 		<p>Welcome, <%= link_to current_member.email, current_member %> 
@@ -11,18 +10,4 @@
 	<% else %>
 		<%= link_to "Login", login_path, id: "button" %>		
 	<% end %>
-=======
-<div class="login">
-	<% if logged_in? %>
-		<p>Welcome, <%= link_to current_member.email, current_member %> 
-		<%if unread_message_count > 0 %>
-			<strong><%= link_to "Messages(#{unread_message_count})", messages_path(current_member), class: "pulsate message" %></strong>
-		<% else %>
-			<%= link_to "Messages(#{unread_message_count})", messages_path(current_member), class: "message" %>
-		<% end %>
-		<%= link_to "Log Out", logout_path, id: "button" %></p>
-	<% else %>
-		<%= link_to "Login", login_path, id: "button" %>		
-	<% end %>
->>>>>>> refs/remotes/origin/master
 </div>
