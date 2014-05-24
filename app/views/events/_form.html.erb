@@ -13,33 +13,31 @@
   
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class:"text_field"%>
   </div>
   <div class="field">
     <%= f.label :type %><br>
-    <%= f.select :type, options_for_select([["Expo"], ["Conferences"], ["Seminars"], ["Meeting"], ["Trade Show"], ["Business Dinners"], ["Networking"], ["Ceremony"], ["Theme Party"], ["Trade Fairs"]]) %>
+    <%= f.select :type, options_for_select([["Expo"], ["Conferences"], ["Seminars"], ["Meeting"], ["Trade Show"], ["Business Dinners"], ["Networking"], ["Ceremony"], ["Theme Party"], ["Trade Fairs"]]), class:"text_field" %>
   </div>
   <div id="time_duration">
-	  <div class="field"">
 	    <%= f.label :time_duration %><br>
 	    <input type="date" id="event_date_begin" name="event[date_begin]" class="date">
-	    <input type="time" id="event_time_begin" name="event[time_begin]" class="time"> to 
+	    <input type="text" id="event_time_begin" name="event[time_begin]" class="time"> to 
 	    <input type="date" id="event_date_end" name="event[date_end]" class="date">
-	    <input type="time" id="event_time_end" name="event[time_end]" class="time">
-	  </div>
+	    <input type="text" id="event_time_end" name="event[time_end]" class="time">
   </div>
   
   <div class="field">
     <%= f.label :location %><br>
-    <%= f.text_field :location %>
+    <%= f.text_field :location, class:"text_field"%>
   </div>
   <div class="field">
     <%= f.label :website %><br>
-    <%= f.text_field :website %>
+    <%= f.text_field :website, class:"text_field"%>
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, class:"description_field"%>
   </div>
   
   <div class="group">
@@ -47,35 +45,35 @@
 	  <%= f.fields_for :groups do |g| %>  
 	  	<div class="field">
 			<%= g.label :name, "Group name"%><br>
-			<%= g.text_field :name %>
+			<%= g.text_field :name, class:"text_field"%>
 		 </div>
 		 <div class="field">
 		  	<%= g.label :societylist, "Add societies"%><br>
-			<%= g.text_field :societylist, class:"society_auto_complete"%>
+			<%= g.text_field :societylist, class:"society_auto_complete", class:"text_field"%>
 		</div>
 	  <% end -%> 
-  </div>
+  </div><br>
   
   <div class="picture">
-	  <h3>Upload Pictures:</h3><br>
+	  <h3>Upload Pictures:</h3>
 	  <%= f.fields_for :pictures do |p| %>  	
 	  	<%= p.file_field :picture %> 
 	  <% end -%>
-  </div> 
+  </div><br><br> 
   
   <div class="ticket">
   	  <h3>Ticket Details:</h3>
 	  <%= f.fields_for :ticket do |t| %>  
 	  	<div class="field">
 			<%= t.label :total, "Quantity"%><br>
-			<%= t.number_field :total %>
+			<%= t.number_field :total, class:"text_field"%>
 		 </div>
 		 <div class="field">
 		  	<%= t.label :price, "Price"%><br>
-			<%= t.number_field :price, step: "any" %>
+			<%= t.number_field :price, step: "any", class:"text_field"%>
 		</div>
 	  <% end -%> 
-  </div>
+  </div><br><br>
   
   <div class="actions">
     <%= f.submit %>

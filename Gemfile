@@ -53,6 +53,8 @@ gem "gritter"
 
 gem 'bxslider-rails'
 
+gem 'jquery-timepicker-rails'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

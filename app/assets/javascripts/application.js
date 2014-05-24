@@ -20,6 +20,7 @@
 //= require gritter
 //= require jquery-ui-timepicker-addon
 //= require jquery.timepicker.js
+//= require jquery.timepicker.js
 function remove_fields(link) {
   $(link).prev("input[type=hidden]").val("1");
   $(link).closest("tr").hide();
@@ -39,6 +40,7 @@ $(function() {
     	heightStyle: "content"
     });
     
+    $("#event_time_begin, #event_time_end").timepicker();
     
 	function split( val ) {
 	  return val.split( /,\s*/ );
