@@ -1,0 +1,19 @@
+<div>
+	<h1>Search results</h1>
+	<table>
+		<thead>
+		    <tr>	  
+		      <th>Name</th>	    
+		      <th>Website</th>	      
+		    </tr>
+		</thead>
+		<tbody>
+			<% @search.try(:each) do |result|%>
+			<tr>
+				<td><%= link_to result.name, result %></td>
+				<td><%= link_to result.website, result.website %></td>
+			</tr>
+  	        <% end %>
+		</tbody>
+	</table>
+</div>
