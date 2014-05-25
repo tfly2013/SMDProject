@@ -14,6 +14,7 @@
  *= require jquery.ui.all
  *= require gritter
  *= require jquery-ui/redmond
+ *= require jquery.timepicker.css
  */
 
 @font-face {
@@ -134,6 +135,16 @@
 	float: right;
 	margin-right: 40px;
 }
+.text_field, #event_type{ 
+    background: white; 
+    border: 1px double #DDD; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #333; 
+    color: #666; 
+    outline: none; 
+    height:25px; 
+    width: 275px; 
+} 
 
 .container{
 	padding-top: 20px;
@@ -152,4 +163,57 @@ footer {
 }
 .footer_info p{
 	text-align: center;
+	.date{
+	background: white; 
+    border: 1px double #DDD; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #333; 
+    color: #666; 
+    outline: none; 
+    height:25px; 
+    width: 200px; 
+}
+
+.time{
+	background: white; 
+    border: 1px double #DDD; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #333; 
+    color: #666; 
+    outline: none; 
+    height:25px; 
+    width: 85px; 
+}
+
+.description_field{
+	background: white; 
+    border: 1px double #DDD; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #333; 
+    color: #666; 
+    outline: none; 
+    height:275px; 
+    width: 275px;
+}
+
+.select_box{
+	background: white; 
+    border: 1px double #DDD; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #333; 
+    color: #666; 
+    outline: none; 
+    height:20px; 
+    width: 100px; 
+}
+
+#search_input{
+	background: white; 
+    border: 1px double #DDD; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #333; 
+    color: #666; 
+    outline: none; 
+    height:20px; 
+    width: 300px; 
 }
