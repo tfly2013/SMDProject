@@ -29,4 +29,6 @@ SMDProject::Application.configure do
   
   config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
   config.assets.precompile += %w( .svg .eot .woff .ttf)
+  
+  Paperclip.options[:command_path] = "/c/Program Files/ImageMagick-6.8.9-Q16"
 end
