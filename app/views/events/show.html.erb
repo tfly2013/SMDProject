@@ -21,14 +21,14 @@
 
 <p>
   <strong>Begin time:</strong>
-  <%= @event.date_begin %>
-  <%= @event.time_begin %>
+  <%= @event.date_begin.strftime("%m/%d/%Y") %>
+  <%= @event.time_begin.strftime("%I:%M%p") %>
 </p>
 
 <p>
   <strong>End time:</strong>
-  <%= @event.date_end %>
-  <%= @event.time_end %>
+  <%= @event.date_end.strftime("%m/%d/%Y") %>
+  <%= @event.time_end.strftime("%I:%M%p") %>
 </p>
 
 <p>
