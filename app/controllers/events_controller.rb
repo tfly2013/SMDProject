@@ -11,7 +11,7 @@ class EventsController < ApplicationController
     @society = Society.find(params[:society_id])
     @event = Event.new
     3.times { @event.pictures.build }
-    @event.groups.build
+    @event.build_group
     @event.build_ticket
   end
 
@@ -72,7 +72,7 @@ class EventsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       params.require(:event).permit(:name, :type, :date_begin, :time_begin, :date_end, :time_end, 
-      :location, :website, :description, groups_attributes: [:id,:name,:societylist], 
+      :location, :website, :description, group_attributes: [:id,:name,:societylist], 
       pictures_attributes: [:id, :picture], ticket_attributes: [:id, :total, :price])
     end
 end

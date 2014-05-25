@@ -6,10 +6,10 @@ class Event < ActiveRecord::Base
   has_many :pictures
   has_many :comments
   has_many :reservations
-  has_and_belongs_to_many :groups
+  has_one :group
      
   accepts_nested_attributes_for :pictures, allow_destroy: true
-  accepts_nested_attributes_for :groups
+  accepts_nested_attributes_for :group
   accepts_nested_attributes_for :ticket
         
   validates :name, length: { maximum: 30 }, presence: true, uniqueness: { case_sensitive: false }

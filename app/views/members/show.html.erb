@@ -1,3 +1,4 @@
+<h1>Welcome to Club-biz!</h1>
 <p>
   <strong>Email:</strong>
   <%= @member.email %>
@@ -24,7 +25,7 @@
 	<%= link_to 'Change Password', change_password_member_path(@member), id: "button" %>	
 <% end %>
 
-<h2>Societies </h2>
+<h2>Societies</h2>
 <table>
 	<thead>
 	    <tr>	  	      	    
@@ -37,11 +38,32 @@
 	<tbody>
 		<% current_member.joins.each do |join| %>
 		<tr>
-			<% society = Society.find(join.society_id) %>
-			<td><%= link_to society.name, society %></td>
+			<td><%= link_to join.society.name, join.society %></td>
 			<td><%= join.role %></td>
-			<td><%= link_to society.website, "http://#{society.website}" %></td>
+			<td><%= link_to join.society.website, join.society.website %></td>
 			<td></td>
+		</tr>		
+		<% end %>
+	</tbody>
+</table>
+
+<h3>Reservations</h3>
+<table>
+	<thead>
+	    <tr>	  	      	    
+	      <th>Event Name</th>
+	      <th>Host by</th>
+	      <th>Quantity</th>	
+	      <th></th>      
+	    </tr>
+	</thead>
+	<tbody>
+		<% current_member.reservations.each do |res| %>
+		<tr>
+			<td><%= link_to res.event.name, [res.event.society, res.event] %></td>
+			<td><%= link_to res.event.society.name, res.event.society %></td>
+			<td><%= res.quantity %></td>
+			<td><%= link_to 'Delete', [res.event.society, res.event, res], method: :delete, data: { confirm: 'Are you sure?' } %></td>
 		</tr>		
 		<% end %>
 	</tbody>

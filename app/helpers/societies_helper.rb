@@ -9,8 +9,8 @@ module SocietiesHelper
   end
   
   def admin?(society)
-    unless current_member.nil?
-      Join.find_by_member_id_and_society_id(current_member.id, society.id).try.(:admin)
+    unless current_member.nil? || Join.find_by_member_id_and_society_id(current_member.id, society.id).nil?
+      Join.find_by_member_id_and_society_id(current_member.id, society.id).admin
     end
   end
       
