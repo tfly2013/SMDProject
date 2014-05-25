@@ -89,7 +89,6 @@ body {
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 .menu ul a, .menu ul span {
-	position: relative;
 	padding: .75em 1em;
 	color: #13a;
 }
@@ -169,7 +168,7 @@ body {
     color: #666; 
     outline: none; 
     height:20px; 
-    width: 300px; 
+    width: 200px; 
 }
 
 .text_field, #event_type{ 

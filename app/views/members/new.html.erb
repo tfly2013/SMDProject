@@ -15,28 +15,28 @@
 
   <div class="field">
     <%= f.label :email %><br>
-    <%= f.email_field :email %>
+    <%= f.email_field :email, class:"text_field"%>
   </div>
   <div class="field">
     <%= f.label :password %><br>
-    <%= f.password_field :password %>
+    <%= f.password_field :password, class:"text_field"%>
   </div>
   <div class="field">
     <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation, class:"text_field"%>
   </div>
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class:"text_field"%>
   </div>
   <div class="field">
     <%= f.label :student_id, "Student ID" %><br>
-    <%= f.text_field :student_id %>
+    <%= f.text_field :student_id, class:"text_field"%>
   </div>
   <div class="field">
     <%= f.label :phone, "Phone Number" %><br>
-    <%= f.telephone_field :phone %>
-  </div>
+    <%= f.telephone_field :phone, class:"text_field"%>
+  </div><br>
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
