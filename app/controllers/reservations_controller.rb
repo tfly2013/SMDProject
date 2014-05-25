@@ -1,4 +1,5 @@
 class ReservationsController < ApplicationController
+  before_action :set_parents
   before_action :set_reservation, only: [:show, :edit, :update, :destroy]
   before_action :require_login
   # GET /reservations/1
@@ -25,7 +26,6 @@ class ReservationsController < ApplicationController
     @reservation.member_id = current_member.id
     respond_to do |format|
       if @reservation.save
-        gflash :now, :success => 'Reservation was successfully created.'
         format.html { redirect_to [@reservation.event.society, @reservation.event, @reservation] }
         format.json { render action: 'show', status: :created, location: [@reservation.event.society, @reservation.event, @reservation] }
       else
@@ -40,7 +40,6 @@ class ReservationsController < ApplicationController
   def update
     respond_to do |format|
       if @reservation.update(reservation_params)
-        gflash :now, :success => 'Reservation was successfully updated.'
         format.html { redirect_to [@reservation.event.society, @reservation.event, @reservation] }
         format.json { head :no_content }
       else
@@ -63,7 +62,10 @@ class ReservationsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_reservation
-      @reservation = Reservation.find(params[:id])
+      @reservation = Reservation.find(params[:id])      
+    end
+    
+    def set_parents
       @event = Event.find(params[:event_id])
       @society = Society.find(params[:society_id])
     end

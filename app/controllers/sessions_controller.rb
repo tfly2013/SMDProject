@@ -9,14 +9,14 @@ class SessionsController < ApplicationController
       session[:member_id] = member.id
       redirect_to member
     else 
-      gflash :now, :error => "Invaild email/password combination." 
+      gflash :now, error: "Invaild email/password combination." 
       @title = "Login"
       render "new"
     end
   end
   
   def destroy
-    gflash :now, :success => "You are logged out."
+    gflash :now, notice: "You are logged out."
     session[:member_id] = nil
     @title = "Login"
     render "new"

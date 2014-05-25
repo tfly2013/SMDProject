@@ -57,16 +57,16 @@
 		    <tr>	  
 		      <th>Name</th>	    
 		      <th>Type</th>
-		      <th>Beign Time</th>
+		      <th>Host</th>
 		      <th>Location</th>
 		    </tr>
 		</thead>
 		<tbody>
-			<% @society.events.each do |event| %>
+			<% all_events(@society).each do |event| %>
 			<tr>
 				<td><%= link_to event.name, [@society, event] %></td>
 				<td><%= event.type %></td>
-				<td><%= event.date_begin %> <%= event.time_begin %></td>
+				<td><%= event.society.name %></td>
 				<td><%= event.location %></td>
 			</tr>		
 			<% end %>

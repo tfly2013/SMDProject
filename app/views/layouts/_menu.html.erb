@@ -21,6 +21,7 @@
 					<% s.item :society, society.name, url_for(society) %>
 				<% end %>
 			<% end %>
+			<% sec.item :new_society, 'Create Society', new_society_path, if: proc {logged_in?} %>
 		<% end %>
 		<% primary.item :events, 'Events', eventslist_path do |sec| %>
 			<% sec.item :reserved_events, 'Rerserved Events',if: proc {logged_in?} do |e| %>

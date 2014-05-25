@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :set_parents
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :require_login, only: [:new, :create, :edit, :update, :destroy]
   # GET /events/1
@@ -8,7 +9,6 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @society = Society.find(params[:society_id])
     @event = Event.new
     3.times { @event.pictures.build }
     @event.build_group
@@ -26,7 +26,6 @@ class EventsController < ApplicationController
     @event.society_id = params[:society_id]
     respond_to do |format|
       if @event.save   
-        gflash :now,  :success => 'Event was successfully created.'
         format.html { redirect_to [@event.society, @event] }
         format.json { render action: 'show', status: :created, location: [@event.society, @event] }
       else
@@ -42,7 +41,6 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        gflash :now,  :success => 'Event was successfully updated.'
         format.html { redirect_to [@event.society, @event] }
         format.json { head :no_content }
       else
@@ -65,7 +63,10 @@ class EventsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
-      @event = Event.find(params[:id])
+      @event = Event.find(params[:id])      
+    end
+    
+    def set_parents
       @society = Society.find(params[:society_id])
     end
 

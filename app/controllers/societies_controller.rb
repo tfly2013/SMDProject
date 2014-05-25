@@ -6,7 +6,7 @@ class SocietiesController < ApplicationController
   def join 
     Join.create(member_id: current_member.id, 
         society_id: @society.id, role: "Member", admin: false)
-    gflash :now, :success => "You have joined this society successfully!"
+    gflash :now, success: 'You joined this society successfully.'
     render "show"
   end  
     
@@ -62,7 +62,6 @@ class SocietiesController < ApplicationController
     @society = Society.new(society_params)
     respond_to do |format|
       if @society.save
-        gflash :now, :success => "Society was successfully created."
         session[:society_id] = @society.id
         format.html { redirect_to @society }
         format.json { render action: 'show', status: :created, location: @society }
@@ -78,7 +77,6 @@ class SocietiesController < ApplicationController
   def update
     respond_to do |format|
       if @society.update(society_params)
-        gflash :now, :success => "Society was successfully updated."
         format.html { redirect_to @society }
         format.json { head :no_content }
       else

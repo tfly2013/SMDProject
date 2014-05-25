@@ -1,7 +1,8 @@
 <ul class="bxslider">
-  <li><%= image_tag "test1.jpg" %></li>
-  <li><%= image_tag "test2.jpg" %></li>
-  <li><%= image_tag "test3.jpg" %></li>
+  <li><%= image_tag Event.find(3).pictures.second.picture.url(:large) %></li>
+  <li><%= image_tag Event.find(1).pictures.second.picture.url(:large) %></li>
+  <li><%= image_tag Event.find(1).pictures.first.picture.url(:large) %></li>
+  <li><%= image_tag Event.find(1).pictures.third.picture.url(:large) %></li>
 </ul>
 
 <div class="index_society">

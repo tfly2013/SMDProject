@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 20140519054620) do
     t.time     "time_end"
     t.string   "location"
     t.string   "website"
-    t.string   "condition"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"

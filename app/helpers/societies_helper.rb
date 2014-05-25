@@ -27,4 +27,18 @@ module SocietiesHelper
     link_to_function(name, "add_fields(this, \"join\", \"#{escape_javascript(fields)}\")")
   end
   
+  def all_events(society)
+    eventlist = Array.new
+    society.events.each do |event|
+      if !event.expire?
+        eventlist << event
+      end
+    end
+    society.groups.each do |group|
+      if !group.event.expire?
+        eventlist << group.event
+      end
+    end
+    return eventlist.uniq
+  end
 end

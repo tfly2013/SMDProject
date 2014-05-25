@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  before_action :set_parents
   before_action :set_message, only: [:show, :destroy]
   before_action :require_login
   # GET /messages
@@ -31,7 +32,6 @@ class MessagesController < ApplicationController
     @message.read = false
     respond_to do |format|
       if @message.save
-        gflash :now, :success => 'Message was successfully sended.'
         format.html { redirect_to [@message.sender, @message] }
         format.json { render action: 'show', status: :created, location: [@message.sender, @message] }
       else
@@ -55,6 +55,9 @@ class MessagesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_message
       @message = Message.find(params[:id])
+    end
+    
+    def set_parents
       @member = Member.find(params[:member_id])
     end
 
