@@ -12,9 +12,11 @@
 		<div>
 			<%= image_tag society.try(:logo).try(:url, :small), class:"acc_img" %>
 			<div lass:"acc_text">
+				<p>Prisident: <%= Join.find_by_society_id_and_role(society.id,"President").member.name %></p>
+				<p>No. of Members: <%= society.joins.count %></p>
 				<%= society.description %>
 			</div>
-			<%= link_to "View", society %>
+			<%= link_to "Details>>>", society %>
 		</div>
 	<% end %>	
 </div>
@@ -25,11 +27,11 @@
 	<% @events.try(:each) do |event| %>
 		<h3><%= event.name %></h3>
 		<div>
-			<%= image_tag event.pictures.first.try(:picture).try(:url, :medium), class:"acc_img" %>
+			<%= image_tag event.pictures.first.try(:picture).try(:url, :small), class:"acc_img" %>
 			<div lass:"acc_text">
 				<%= event.description %>
 			</div>
-			<%= link_to "View", [event.society, event] %>
+			<%= link_to "Details>>>", [event.society, event] %>
 		</div>
 	<% end %>	
 </div>

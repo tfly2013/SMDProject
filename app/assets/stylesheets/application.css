@@ -228,7 +228,13 @@ body {
 .container{
 	padding-top: 30px;
 	padding-bottom: 150px;
+	width: 900px;
 }
+
+#button {
+	margin: 10px;	
+}
+
 /* footer */
 footer {
 	background-color: #D8D8D8;
@@ -254,13 +260,3 @@ footer {
     width: 200px; 
 }
 
-/* index page */
-.index_society{
-	float: left;
-	width: 50%;	
-}
-
-.index_event{
-	float: left;
-	width: 50%;
-}

@@ -1,4 +1,4 @@
-<h1>Welcome to Club-biz!</h1>
+<h1>Profile</h1>
 <p>
   <strong>Email:</strong>
   <%= @member.email %>
@@ -23,7 +23,6 @@
 	<%= link_to 'View Messages', [current_member, :messages], id: "button" %>
 	<%= link_to 'Edit Details', edit_member_path(@member), id: "button" %>
 	<%= link_to 'Change Password', change_password_member_path(@member), id: "button" %>	
-<% end %>
 
 <h3>Societies</h3>
 <table>
@@ -68,3 +67,4 @@
 		<% end %>
 	</tbody>
 </table>
+<% end %>

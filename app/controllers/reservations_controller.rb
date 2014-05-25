@@ -55,7 +55,7 @@ class ReservationsController < ApplicationController
   def destroy
     @reservation.destroy
     respond_to do |format|
-      format.html { redirect_to [@society, @event] }
+      format.html { redirect_to current_member }
       format.json { head :no_content }
     end
   end
