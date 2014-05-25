@@ -14,11 +14,9 @@
 
   <div class="field">
     <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
+    <%= f.text_area :content, class:"description_field"%>
+  </div><br>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
-<br />
-<%= link_to 'Back', [@society, @event] %>

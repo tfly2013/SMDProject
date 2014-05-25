@@ -17,19 +17,19 @@
   </div>
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class:"text_field"%>
   </div>
   <div class="field">
     <%= f.label :register_num %><br>
-    <%= f.text_field :register_num %>
+    <%= f.text_field :register_num, class:"text_field"%>
   </div>
   <div class="field">
     <%= f.label :website %><br>
-    <%= f.url_field :website %>
+    <%= f.url_field :website, class:"text_field"%>
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, class:"description_field"%>
   </div>
   
   <h3>Office Bearers</h3>  
@@ -54,7 +54,7 @@
   			<td><%= link_to_add_member "Add Bearer", f %></td>
   		</tr>  	
   	  </tfoot> 
-  </table>
+  </table><br>
   <div class="actions">
     <%= f.submit %>
   </div>  

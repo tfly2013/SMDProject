@@ -1,6 +1,7 @@
 <h1>
   <%= @event.name %>
-  
+</h1>
+
 <% if admin?(@society) %>
 	<%= link_to 'Edit', [:edit, @society, @event], id: "button" %>
 <% end %>
