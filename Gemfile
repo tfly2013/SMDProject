@@ -59,6 +59,8 @@ gem 'bxslider-rails'
 
 gem 'jquery-timepicker-rails'
 
+gem 'validates_timeliness', '~> 3.0'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

@@ -19,8 +19,9 @@
 		<% if member_of?(@society) %>
 			<%= link_to "Join Society",join_society_path(@society), id: "button" %>
 		<% end %>
-		
-		<%= link_to "Edit Society Details", edit_society_path(@society), id: "button" %>
+		<% if admin?(@society) %>
+			<%= link_to "Edit Society Details", edit_society_path(@society), id: "button" %>
+		<% end %>
 	</div>
 </div>
 
@@ -48,7 +49,9 @@
 	</table>
 </div>
 <div class="event">
+	<%if admin?(@society)%>
 		<%= link_to "Create Event", new_society_event_path(@society), id: "button" %>
+    <% end %>
 	<table>
 		<thead>
 		    <tr>	  
