@@ -183,6 +183,15 @@ body {
     width: 275px; 
 } 
 
+.bx-wrapper{
+	width: 600px;	
+}
+
+.bx-wrapper img{
+    display:block;
+    max-width: 100%;
+}
+
 /* date time */
 .date{
 	background: white; 

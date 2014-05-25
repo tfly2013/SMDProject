@@ -1,6 +1,6 @@
 <h1>
   <%= @event.name %>
-  
+</h1>
 <% if admin?(@society) %>
 	<%= link_to 'Edit', [:edit, @society, @event], id: "button" %>
 <% end %>
@@ -8,9 +8,9 @@
 
 <% if @event.pictures.count > 0 %>
 	<ul class="bxslider">
-	  <li><%= image_tag @event.pictures.first.try(:picture).try(:url, :medium), class: "event_pictures" %></li>	
-	  <li><%= image_tag @event.pictures.second.try(:picture).try(:url, :medium), class: "event_pictures" %></li>	
-	  <li><%= image_tag @event.pictures.third.try(:picture).try(:url, :medium), class: "event_pictures" %></li>
+	  <li><%= image_tag @event.pictures.first.try(:picture).try(:url, :large), class: "event_pictures" %></li>	
+	  <li><%= image_tag @event.pictures.second.try(:picture).try(:url, :large), class: "event_pictures" %></li>	
+	  <li><%= image_tag @event.pictures.third.try(:picture).try(:url, :large), class: "event_pictures" %></li>
 	</ul>
 <% end %>
 
