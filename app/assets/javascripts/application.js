@@ -33,9 +33,8 @@ function add_fields(link, association, content) {
 }
 
 $(function() {
-    $( "input[type=submit], #button" ).button();          
-    $( ".message" ).button({icons: { primary: "ui-icon-mail-closed" }});  
-     
+    $( "input[type=submit], #button").button();          
+         
     $( ".accordion" ).accordion({
     	heightStyle: "content"
     });
@@ -81,10 +80,11 @@ $(function() {
 
 var ready = function() {
     $(".menu ul").superfish(); 
-    $('.bxslider').bxSlider({
-  	auto: true,
-	});
 };
-
 $(document).ready(ready);
 $(document).on('page:load', ready);
+$(document).on('page:change', function () {
+  $('.bxslider').bxSlider({
+    auto: true,
+  });
+});

@@ -36,12 +36,6 @@ class MembersController < ApplicationController
     end
   end
   
-  # GET /members
-  # GET /members.json
-  def index
-    @members = Member.all
-  end
-
   # GET /members/1
   # GET /members/1.json
   def show

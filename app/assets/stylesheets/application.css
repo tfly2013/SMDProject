@@ -145,6 +145,9 @@ body {
 .search {
 	float: right;
 	margin-right: 40px;
+	vertical-align: middle;
+	position: relative;
+	bottom: 5px;
 }
 .text_field, #event_type{ 
     background: white; 

@@ -6,10 +6,10 @@
 		<% else %>
 			<%= link_to "Messages(#{unread_message_count})", [current_member, :messages], class: "message" %>
 		<% end %>
-		<%= link_to "Logout", logout_path, id: "button" %>
+		<%= link_to "Logout", logout_path %>
 		<span class="glyphicon glyphicon-user"></span> </p>
 	<% else %>
-		<p><%= link_to "Login", login_path, id: "button" %>
+		<p><%= link_to "Login", login_path %>
 			<span class="glyphicon glyphicon-user"></span> </p>
 	<% end %>
 </div>

@@ -4,7 +4,7 @@ SMDProject::Application.routes.draw do
   
   resources :sessions, only: [:new, :create, :destroy]  
 
-  resources :members do
+  resources :members, only: [:new, :create, :show, :edit, :update, :destroy] do
     resources :messages, only: [:index, :new, :create, :show, :destroy]
     member do      
       get 'change_password'
