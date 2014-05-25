@@ -10,7 +10,6 @@ class CreateEvents < ActiveRecord::Migration
       t.time :time_end
       t.string :location
       t.string :website
-      t.string :condition
       t.text :description
 
       t.timestamps

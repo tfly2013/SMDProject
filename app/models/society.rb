@@ -8,7 +8,9 @@ class Society < ActiveRecord::Base
   accepts_nested_attributes_for :joins, allow_destroy: true,
                       reject_if: proc { |attributes| attributes['role'].blank? }
   
-  has_attached_file :logo, styles: { medium: "200x200>", small: "150x150>" }, :default_url => "/images/missing_:style.png"
+  has_attached_file :logo, styles: { medium: "200x200>", small: "150x150>" }, 
+                  default_url: "/images/missing_:style.png", 
+                  preserve_files: true
   
   validates_attachment_content_type :logo, content_type: ['image/jpeg', 'image/jpg', 'image/png']
   validates_attachment_size :logo, :less_than => 4.megabytes

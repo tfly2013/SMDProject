@@ -10,8 +10,7 @@ class PagesController < ApplicationController
   
   def search_autocomplete
     term = params[:search_input]
-    societies = Society.all.order(:name).where("name LIKE ?", "#{term}%")
-    
+    societies = Society.all.order(:name).where("name LIKE ?", "#{term}%")    
     respond_to do |format|
       format.html
       format.json { render json: societies.map(&:name) }

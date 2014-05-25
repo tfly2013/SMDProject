@@ -15,11 +15,15 @@ class Event < ActiveRecord::Base
   validates :name, length: { maximum: 30 }, presence: true, uniqueness: { case_sensitive: false }
   validates :type, length: { maximum: 15 }, presence: true
 
-  validates_date :date_begin, presence: true, :on_or_after => lambda { Time.now.to_date }
-  validates :date_end, presence: true
-  validates :time_begin, presence: true
-  validates :time_end, presence: true
+  validates_date :date_begin, presence: true, :on_or_after => lambda { Date.current }
+  validates_date :date_end, presence: true, :on_or_after => :date_begin
+  validates_time :time_begin, presence: true
+  validates_time :time_end, presence: true, :on_or_after => :time_begin
   validates :location, presence: true
-  validates :description, length: { maximum: 500 }
+  validates :description, length: { maximum: 500 }  
   
+  def expire?
+    dt_end = Datetime.new(date_end.year, date_end.month, date_end.day, time_end.hour, time_end.min, time_end.sec)
+    return dt_end < Time.now
+  end
 end

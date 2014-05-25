@@ -41,8 +41,6 @@ gem 'activerecord-session_store'
 
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 
-gem 'jquery_mobile_rails'
-
 gem 'jquery-timepicker-addon-rails'
 
 gem 'jquery-timepicker-rails'
@@ -57,9 +55,7 @@ gem "gritter"
 
 gem 'bxslider-rails'
 
-gem 'jquery-timepicker-rails'
-
-gem 'validates_timeliness', '~> 3.0'
+gem 'validates_timeliness'
 
 # Use unicorn as the app server
 # gem 'unicorn'

@@ -78,13 +78,9 @@ $(function() {
 	});
   }); 
 
-var ready = function() {
-    $(".menu ul").superfish(); 
-};
-$(document).ready(ready);
-$(document).on('page:load', ready);
 $(document).on('page:change', function () {
   $('.bxslider').bxSlider({
     auto: true,
   });
+  $(".menu ul").superfish();
 });
