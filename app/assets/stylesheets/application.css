@@ -26,11 +26,23 @@
          url('/assets/glyphicons-halflings-regular.svg#webfont') format('svg');
 }
 
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+
 .page{
 	margin: 0;
 	padding: 0;
-	height:100%;
+	min-height:100%;
    	position:relative;
+}
+
+.row{
+	width: 100%;
+	margin: 0;
 }
 /* first row */
 .banner_top {
@@ -39,7 +51,7 @@
 }
 .banner_top .logo{
 	float: left;
-	margin-left: 30px;
+	margin: 10px;
 }
 .banner_top p,
 .banner_top a{
@@ -65,7 +77,6 @@
 /* menu */
 .menu{
 	float: left;
-	margin-left: 20px;
 }
 .menu * {
 	list-style: none;
@@ -147,15 +158,16 @@
 } 
 
 .container{
-	padding-top: 20px;
+	padding-top: 30px;
 	padding-bottom: 150px;
 }
 /* footer */
 footer {
 	background-color: #D8D8D8;
-	position:absolute;
-    bottom:0;
+    height: 130px;
     width:100%;
+    bottom: 0;
+    position:absolute;
 }
 .footer_info{
 	margin-top: 10px;
@@ -174,6 +186,18 @@ footer {
     width: 200px; 
 }
 
+/* index page */
+.index_society{
+	float: left;
+	width: 50%;	
+}
+
+.index_event{
+	float: left;
+	width: 50%;
+}
+
+/* date time */
 .time{
 	background: white; 
     border: 1px double #DDD; 

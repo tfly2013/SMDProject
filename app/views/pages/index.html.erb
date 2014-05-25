@@ -4,6 +4,7 @@
   <li><%= image_tag "test3.jpg" %></li>
 </ul>
 
+<div class="index_society">
 <h2>Popular Societies</h2>
 <div class="accordion">
 	<% @societies.try(:each) do |society| %>
@@ -17,7 +18,8 @@
 		</div>
 	<% end %>	
 </div>
-
+</div>
+<div class="index_event">
 <h2>Hot Events</h2>
 <div class="accordion">
 	<% @events.try(:each) do |event| %>
@@ -30,4 +32,5 @@
 			<%= link_to "View", [event.society, event] %>
 		</div>
 	<% end %>	
+</div>
 </div>
