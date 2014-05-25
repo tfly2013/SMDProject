@@ -12,7 +12,7 @@
 		<% end %>		
 		<% primary.item :societies, 'Societies', societies_path do |sec| %>
 			<% sec.item :my_societies, 'My Societies',if: proc {logged_in?} do |s| %>
-				<% current_member.societies.uniq.each do |society| %>
+				<% current_member.societies.uniq.take(10).each do |society| %>
 					<% s.item :society, society.name, url_for(society) %>
 				<% end %>
 			<% end %>
@@ -23,6 +23,16 @@
 			<% end %>
 		<% end %>
 		<% primary.item :events, 'Events', eventslist_path do |sec| %>
+			<% sec.item :reserved_events, 'Rerserved Events',if: proc {logged_in?} do |e| %>
+				<% current_member.reservations.collect{|res| res.event}.uniq.take(10).each do |event| %>
+					<% e.item :event, event.name, [event.society, event] %>
+				<% end %>				
+			<% end %>
+			<% sec.item :hot_events, 'Hot Events' do |e| %>
+				<% Event.all.sort_by{|event| event.reservations.count}.take(10).each do |event| %>
+					<% e.item :event, event.name, [event.society, event] %>
+				<% end %>
+			<% end %>
 		<% end %>
 	<% end %>
 </div>		

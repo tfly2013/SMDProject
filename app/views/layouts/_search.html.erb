@@ -1,4 +1,4 @@
-<div for="search">
+<div class= "search">
 	<%= form_tag("/search", method: "get") do %>
 	  <%= label_tag(:search, "Search for:") %>
 	  <%= select_tag(:search_method, options_for_select([["Search by event"], ["Search by society"], ["Search event by society"], ["Search by event type"]]))%>

@@ -40,7 +40,10 @@ gem 'activerecord-session_store'
 
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 
+gem 'jquery_mobile_rails'
+
 gem 'jquery-timepicker-addon-rails'
+
 gem 'jquery-timepicker-rails'
 
 gem "simple-navigation"

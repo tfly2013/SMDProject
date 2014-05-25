@@ -1,8 +1,14 @@
 <header>
-	<div class="logo">
-		<%= image_tag("logo.png",alt: "Club-biz logo", class: "round") %>
+	<div class="banner_top row">
+		<div class="col-md-8">
+			<div class="logo">
+				<%= image_tag("logo.png",alt: "Club-biz logo", class: "round") %>
+			</div>			
+		</div>
+		<%= render 'layouts/login' %>
 	</div>
-	<div class="title"><h1 class="title"><b>Club-Biz</b></h1></div>
-	<%= render 'layouts/login' %>
-	<hr />			
+	<div class="banner_second row">
+		<%= render 'layouts/menu' %>
+		<%= render 'layouts/search' %>
+	</div>
 </header>

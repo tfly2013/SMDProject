@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SMDProject</title>
+  <title>SMDProject</title>  
   <%= stylesheet_link_tag "blueprint/print",media: "print" %>
-  <%= stylesheet_link_tag "blueprint/screen",media: "screen" %>  
+  <%= stylesheet_link_tag "blueprint/screen",media: "screen" %>   
+  <%= stylesheet_link_tag "bootstrap",media: "all" %>  
+  <%= stylesheet_link_tag "bootstrap,min",media: "all" %> 
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>  
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "superfish" %>
   <%= javascript_include_tag "hoverIntent" %>
+  <%= javascript_include_tag "bootstrap" %>
+  <%= javascript_include_tag "bootstrap.min" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div class="container">
-		<%= gflash %>
-		<%= render 'layouts/header' %>		
-		<%= render 'layouts/menu' %>
-		<%= render 'layouts/search' %>
-		<div class="content">
-		<% flash.each do |key, value| %>
-			<div class="<%= key %>"> <%= value %> </div>
-		<% end %>
-		<%= yield %>
+	<%= gflash %>
+	<div class="page">
+		<%= render 'layouts/header' %>	
+		<div class="container">	
+			<div class="content">
+				<%= yield %>
+			</div>		
 		</div>
 		<%= render 'layouts/footer' %>
-		<%= debug params %>
 	</div>
 </body>
 </html>
