@@ -82,7 +82,7 @@ $(function() {
 var ready = function() {
     $(".menu ul").superfish(); 
     $('.bxslider').bxSlider({
-  	auto: true,
+  		auto: true,
 	});
 };
 

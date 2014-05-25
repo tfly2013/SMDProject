@@ -96,7 +96,6 @@ ActiveRecord::Schema.define(version: 20140520081715) do
     t.integer  "member_id"
     t.integer  "event_id"
     t.integer  "quantity"
-    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -128,8 +127,6 @@ ActiveRecord::Schema.define(version: 20140520081715) do
     t.integer  "event_id"
     t.integer  "total"
     t.decimal  "price"
-    t.datetime "time"
-    t.string   "location"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
