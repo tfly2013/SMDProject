@@ -1,5 +1,6 @@
 <div>
 	<h1>Search results</h1>
+	<h2>Society</h2>
 	<table>
 		<thead>
 		    <tr>	  
@@ -8,9 +9,27 @@
 		    </tr>
 		</thead>
 		<tbody>
-			<% @search.try(:each) do |result|%>
+			<% @society.try(:each) do |result|%>
 			<tr>
 				<td><%= link_to result.name, result %></td>
+				<td><%= link_to result.website, result.website %></td>
+			</tr>
+  	        <% end %>
+		</tbody>
+	</table>
+	
+		<h2>Events</h2>
+	<table>
+		<thead>
+		    <tr>	  
+		      <th>Name</th>	    
+		      <th>Website</th>	      
+		    </tr>
+		</thead>
+		<tbody>
+			<% @event.try(:each) do |result|%>
+			<tr>
+				<td><%= link_to result.name, [result.society, result] %></td>
 				<td><%= link_to result.website, result.website %></td>
 			</tr>
   	        <% end %>
