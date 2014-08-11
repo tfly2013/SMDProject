@@ -81,6 +81,9 @@ $(function() {
 $(document).on('page:change', function () {
   $('.bxslider').bxSlider({
     auto: true,
+    adaptiveHeight: true,
+  	mode: 'fade',
+  	captions: true
   });
   $(".menu ul").superfish();
 });
