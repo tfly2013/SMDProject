@@ -59,15 +59,23 @@
 		      <th>Type</th>
 		      <th>Host</th>
 		      <th>Location</th>
+		      <th>Status</th>
 		    </tr>
 		</thead>
 		<tbody>
-			<% all_events(@society).each do |event| %>
+			<% @society.events.each do |event| %>
 			<tr>
 				<td><%= link_to event.name, [@society, event] %></td>
 				<td><%= event.type %></td>
 				<td><%= event.society.name %></td>
 				<td><%= event.location %></td>
+				<td>
+					<% if event.expire? %>
+					Expired
+					<% else %>
+					Open
+					<% end %>
+				</td>
 			</tr>		
 			<% end %>
 		</tbody>
